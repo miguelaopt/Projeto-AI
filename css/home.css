@@ -97,7 +97,66 @@ nav a:hover {
     padding-left: 15px;
 }
 
-/* Estilos do Grid e Cards (React) */
+/* --- ESTILOS DO SLIDESHOW --- */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: 20px auto 60px auto;
+    border: 3px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(242, 183, 5, 0.3);
+    overflow: hidden;
+    background-color: #000;
+}
+
+.fade-slides {
+    display: none;
+    width: 100%;
+    height: 400px;
+}
+
+.fade-slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.text-slide {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid var(--gold);
+}
+
+.text-slide h2 {
+    font-family: var(--font-title);
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.text-slide p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* Animação suave do slide */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* --- GRID E CARDS DE CERVEJA --- */
 .beer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

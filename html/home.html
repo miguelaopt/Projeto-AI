@@ -8,19 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="/js/home.js" defer></script>
-
+    
     <link rel="stylesheet" href="/css/home.css">
+    
+    <script src="/js/home.js" defer></script>
 </head>
 <body>
 
     <header>
         <div class="logo">CERVEJARIA <span style="color:white;">ROYAL</span></div>
-        
         <div class="search-bar">
             <input type="text" placeholder="Buscar cervejas...">
         </div>
-
         <nav>
             <ul>
                 <li><a href="#">Cervejas</a></li>
@@ -31,39 +30,42 @@
         </nav>
     </header>
 
-    <main class="slides">
-        <div class="container-slideshow">
-            <div class="fade-slides">
+    <main class="container">
+        
+        <h1 class="section-title">Destaques da Semana</h1>
+
+        <div class="slideshow-container">
+            
+            <div class="fade-slides fade">
                 <img src="/img/super_1.jpeg" alt="Super Bock">
                 <div class="text-slide">
                     <h2>Descubra o Sabor</h2>
                     <p>Experimente cervejas artesanais de alta qualidade</p>
                 </div>
             </div>
-            <div class="fade-slides">
+
+            <div class="fade-slides fade">
                 <img src="/img/sagres_1.png" alt="Sagres">
                 <div class="text-slide">
                     <h2>Refresque-se</h2>
                     <p>Encontre a cerveja perfeita para qualquer ocasião</p>
+                </div>
             </div>
-            <div class="fade-slides">
+
+            <div class="fade-slides fade">
                 <img src="/img/heineken_1.jpg" alt="Heineken">
                 <div class="text-slide">
                     <h2>Compartilhe Momentos</h2>
                     <p>Brinde com amigos e celebre com nossas cervejas</p>
                 </div>
             </div>
+
         </div>
-    </main>
-
-    <main class="container">
-        <h1 class="section-title">Destaques da Semana</h1>
-        
         <div class="beer-grid">
-
+            
             <div class="beer-card">
                 <div class="card-image-container">
-                    <img src="imagens/cerveja1.jpg" alt="Imperial Stout">
+                    <img src="/img/heineken_1.jpg" alt="Imperial Stout">
                 </div>
                 <div class="card-content">
                     <h3 class="beer-name">Imperial Stout Aged</h3>
@@ -74,10 +76,10 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="beer-card">
                 <div class="card-image-container">
-                    <img src="imagens/cerveja2.jpg" alt="Golden IPA">
+                    <img src="/img/heineken_1.jpg" alt="Golden IPA">
                 </div>
                 <div class="card-content">
                     <h3 class="beer-name">Golden IPA</h3>
@@ -91,32 +93,59 @@
 
             <div class="beer-card">
                 <div class="card-image-container">
-                    <img src="imagens/cerveja3.jpg" alt="Weissbier">
+                    <img src="/img/heineken_1.jpg" alt="Golden IPA">
                 </div>
                 <div class="card-content">
-                    <h3 class="beer-name">Weissbier Classic</h3>
-                    <p class="beer-style">Weiss / Trigo</p>
+                    <h3 class="beer-name">Golden IPA</h3>
+                    <p class="beer-style">India Pale Ale</p>
                     <div class="card-footer">
-                        <span class="rating">4.7 <span>⭐</span></span>
-                        <span class="price">R$ 18,90</span>
+                        <span class="rating">4.5 <span>⭐</span></span>
+                        <span class="price">R$ 22,50</span>
                     </div>
                 </div>
             </div>
 
             <div class="beer-card">
                 <div class="card-image-container">
-                    <img src="imagens/cerveja4.jpg" alt="Red Ale">
+                    <img src="/img/heineken_1.jpg" alt="Golden IPA">
                 </div>
                 <div class="card-content">
-                    <h3 class="beer-name">Red Ale Special</h3>
-                    <p class="beer-style">Red Ale</p>
+                    <h3 class="beer-name">Golden IPA</h3>
+                    <p class="beer-style">India Pale Ale</p>
                     <div class="card-footer">
-                        <span class="rating">4.2 <span>⭐</span></span>
-                        <span class="price">R$ 28,00</span>
+                        <span class="rating">4.5 <span>⭐</span></span>
+                        <span class="price">R$ 22,50</span>
                     </div>
                 </div>
             </div>
 
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="/img/heineken_1.jpg" alt="Golden IPA">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Golden IPA</h3>
+                    <p class="beer-style">India Pale Ale</p>
+                    <div class="card-footer">
+                        <span class="rating">4.5 <span>⭐</span></span>
+                        <span class="price">R$ 22,50</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="/img/heineken_1.jpg" alt="Golden IPA">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Golden IPA</h3>
+                    <p class="beer-style">India Pale Ale</p>
+                    <div class="card-footer">
+                        <span class="rating">4.5 <span>⭐</span></span>
+                        <span class="price">R$ 22,50</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
