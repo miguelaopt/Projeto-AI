@@ -46,24 +46,6 @@ header {
     letter-spacing: 1px;
 }
 
-/* Barra de Pesquisa */
-.search-bar {
-    position: relative;
-    width: 300px;
-}
-.search-bar input {
-    width: 100%;
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid #444;
-    background-color: #333;
-    color: white;
-    outline: none;
-}
-.search-bar input:focus {
-    border-color: var(--gold);
-}
-
 /* Menu de Navegação */
 nav ul {
     display: flex;
