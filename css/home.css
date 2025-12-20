@@ -245,3 +245,102 @@ footer {
     border-top: 1px solid #333;
     color: #777;
 }
+
+/* --- DIVISÓRIA --- */
+.section-divider {
+    border: 0;
+    height: 2px;
+    /* Gradiente que vai de transparente para Dourado e volta para transparente */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gold), rgba(0, 0, 0, 0));
+    margin: 50px auto; /* Espaçamento em cima e em baixo */
+    width: 80%; /* A linha ocupa 80% da largura do container */
+    opacity: 0.7;
+}
+
+/* --- SECÇÃO NOSSA HISTÓRIA --- */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin: 80px 0;
+}
+
+.about-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.btn-gold {
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+}
+
+.about-image {
+    flex: 1;
+    height: 350px;
+    border: 1px solid var(--gold);
+    padding: 10px; /* Cria uma moldura */
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- BARRA DE INFORMAÇÕES --- */
+.info-bar {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 50px 20px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+}
+
+.info-item h3 {
+    font-family: var(--font-title);
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.info-item p {
+    color: #bbb;
+    line-height: 1.6;
+}
+
+/* Responsividade (Para telemóveis) */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+    }
+    .info-bar {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
