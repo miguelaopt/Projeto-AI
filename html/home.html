@@ -8,82 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="/js/home.js" defer></script>
 
     <link rel="stylesheet" href="/css/home.css">
-    <script>
-        // 1. Dados (Mock Data)
-const cervejasData = [
-    {
-        id: 1,
-        nome: "Imperial Stout Aged",
-        estilo: "Stout",
-        nota: 4.9,
-        preco: "R$ 45,90",
-        img: "/img/imagem_super_1.jpeg"
-    },
-    {
-        id: 2,
-        nome: "Golden IPA",
-        estilo: "India Pale Ale",
-        nota: 4.5,
-        preco: "R$ 22,50",
-        img: "https://images.unsplash.com/photo-1571556950278-65476a394a4c?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        id: 3,
-        nome: "Weissbier Classic",
-        estilo: "Weiss / Trigo",
-        nota: 4.7,
-        preco: "R$ 18,90",
-        img: "https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-        id: 4,
-        nome: "Red Ale Special",
-        estilo: "Red Ale",
-        nota: 4.2,
-        preco: "R$ 28,00",
-        img: "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?q=80&w=800&auto=format&fit=crop"
-    }
-];
-
-// 2. Componente Card (O "Tijolo" da construção)
-const BeerCard = ({ beer }) => {
-    return (
-        <div className="beer-card">
-            <div className="card-image-container">
-                <img src={beer.img} alt={beer.nome} />
-            </div>
-            <div className="card-content">
-                <h3 className="beer-name">{beer.nome}</h3>
-                <p className="beer-style">{beer.estilo}</p>
-                <div className="card-footer">
-                    <span className="rating">
-                        {beer.nota} <span>⭐</span>
-                    </span>
-                    <span className="price">{beer.preco}</span>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-// 3. Componente Principal do React (O Grid)
-const BeerApp = () => {
-    return (
-        <div className="beer-grid">
-            {cervejasData.map((cerveja) => (
-                <BeerCard key={cerveja.id} beer={cerveja} />
-            ))}
-        </div>
-    );
-};
-
-// 4. Renderizando no HTML
-// Seleciona a div com id 'react-root' do index.html
-const root = ReactDOM.createRoot(document.getElementById('react-root'));
-root.render(<BeerApp />);
-    </script>
 </head>
 <body>
 
@@ -104,14 +31,98 @@ root.render(<BeerApp />);
         </nav>
     </header>
 
+    <main class="slides">
+        <div class="container-slideshow">
+            <div class="fade-slides">
+                <img src="/img/super_1.jpeg" alt="Super Bock">
+                <div class="text-slide">
+                    <h2>Descubra o Sabor</h2>
+                    <p>Experimente cervejas artesanais de alta qualidade</p>
+                </div>
+            </div>
+            <div class="fade-slides">
+                <img src="/img/sagres_1.png" alt="Sagres">
+                <div class="text-slide">
+                    <h2>Refresque-se</h2>
+                    <p>Encontre a cerveja perfeita para qualquer ocasião</p>
+            </div>
+            <div class="fade-slides">
+                <img src="/img/heineken_1.jpg" alt="Heineken">
+                <div class="text-slide">
+                    <h2>Compartilhe Momentos</h2>
+                    <p>Brinde com amigos e celebre com nossas cervejas</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <main class="container">
         <h1 class="section-title">Destaques da Semana</h1>
         
-        <div id="react-root"></div>
+        <div class="beer-grid">
+
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="imagens/cerveja1.jpg" alt="Imperial Stout">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Imperial Stout Aged</h3>
+                    <p class="beer-style">Stout</p>
+                    <div class="card-footer">
+                        <span class="rating">4.9 <span>⭐</span></span>
+                        <span class="price">R$ 45,90</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="imagens/cerveja2.jpg" alt="Golden IPA">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Golden IPA</h3>
+                    <p class="beer-style">India Pale Ale</p>
+                    <div class="card-footer">
+                        <span class="rating">4.5 <span>⭐</span></span>
+                        <span class="price">R$ 22,50</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="imagens/cerveja3.jpg" alt="Weissbier">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Weissbier Classic</h3>
+                    <p class="beer-style">Weiss / Trigo</p>
+                    <div class="card-footer">
+                        <span class="rating">4.7 <span>⭐</span></span>
+                        <span class="price">R$ 18,90</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beer-card">
+                <div class="card-image-container">
+                    <img src="imagens/cerveja4.jpg" alt="Red Ale">
+                </div>
+                <div class="card-content">
+                    <h3 class="beer-name">Red Ale Special</h3>
+                    <p class="beer-style">Red Ale</p>
+                    <div class="card-footer">
+                        <span class="rating">4.2 <span>⭐</span></span>
+                        <span class="price">R$ 28,00</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Cervejaria Royal. Tradição e Qualidade.</p>
     </footer>
+
 </body>
 </html>

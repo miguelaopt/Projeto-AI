@@ -6,7 +6,7 @@ const cervejasData = [
         estilo: "Stout",
         nota: 4.9,
         preco: "R$ 45,90",
-        img: "https://images.unsplash.com/photo-1625126596868-b76922df6653?q=80&w=800&auto=format&fit=crop"
+        img: "img/imagem_super_1.jpeg"
     },
     {
         id: 2,
@@ -65,6 +65,23 @@ const BeerApp = () => {
         </div>
     );
 };
+
+//funcionalidade de slides ( moodle )
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("fade-slides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 4000); // Muda a imagem a cada 4 segundos
+}
 
 // 4. Renderizando no HTML
 // Seleciona a div com id 'react-root' do index.html
