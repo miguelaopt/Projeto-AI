@@ -1,0 +1,188 @@
+/* --- VARIÁVEIS CSS (Paleta e Fontes) --- */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1E1E1E;
+    --gold: #F2B705;
+    --white: #FFFFFF;
+    --green-detail: #2E7D32;
+    --copper-detail: #B87333;
+    
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Roboto', sans-serif;
+}
+
+/* --- RESET E BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--white);
+    font-family: var(--font-text);
+    padding-top: 80px; /* Espaço para o header fixo */
+}
+
+/* --- HEADER FIXO --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(30, 30, 30, 0.95);
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    position: relative;
+    width: 300px;
+}
+.search-bar input {
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+.search-bar input:focus {
+    border-color: var(--gold);
+}
+
+/* Menu de Navegação */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+nav a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+nav a:hover {
+    color: var(--gold);
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--gold);
+    padding-left: 15px;
+}
+
+/* Estilos do Grid e Cards (React) */
+.beer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.beer-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.beer-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(242, 183, 5, 0.2);
+    border-color: var(--gold);
+}
+
+.card-image-container {
+    height: 200px;
+    width: 100%;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.beer-name {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+}
+
+.beer-style {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.rating {
+    color: var(--gold);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.price {
+    color: var(--green-detail);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Footer Simples */
+footer {
+    margin-top: 60px;
+    background-color: #0f0f0f;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #777;
+}
