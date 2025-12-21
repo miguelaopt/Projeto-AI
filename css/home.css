@@ -413,3 +413,40 @@ input:focus, select:focus, textarea:focus {
         grid-template-columns: 1fr; /* Um campo por linha */
     }
 }
+
+/* --- REMOVER SUBLINHADO DOS LINKS DOS CARDS --- */
+.beer-grid a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit;        /* Mantém a cor branca/original do texto e não azul */
+    display: block;        /* Garante que o link ocupa a área toda do card */
+}
+
+/* --- BOTÕES DE IDIOMA --- */
+.lang-switch {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid #444;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    opacity: 0.5; /* Meio apagado quando não selecionado */
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    border-color: var(--gold);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    border-color: var(--gold);
+    background-color: rgba(242, 183, 5, 0.1);
+    transform: scale(1.1);
+}

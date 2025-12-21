@@ -1,0 +1,157 @@
+/* Remove a decoração dos links na grid da home */
+.beer-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Layout da Página de Detalhe */
+.detail-container {
+    margin-top: 120px; /* Mais espaço por causa do header */
+}
+
+.product-wrapper {
+    display: flex;
+    gap: 50px;
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Imagem Grande */
+.product-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212; /* Fundo escuro atrás da garrafa */
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--gold);
+}
+
+.product-image img {
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+}
+
+/* Informações */
+.product-info {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag-style {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.product-info h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.detail-price {
+    color: var(--green-detail);
+    font-weight: 700;
+}
+
+.detail-rating {
+    color: var(--gold);
+}
+
+.product-info h3 {
+    font-family: var(--font-title);
+    color: var(--gold);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Tags de Sabores */
+.flavors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.flavor-tag {
+    border: 1px solid #444;
+    color: #bbb;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.flavor-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .product-wrapper {
+        flex-direction: column;
+    }
+    .product-image img {
+        max-height: 300px;
+    }
+}
+
+/* --- SECÇÃO DE FAQ / ALERGÉNIOS --- */
+.faq-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.faq-item {
+    background-color: #222; /* Fundo ligeiramente diferente */
+    border-left: 3px solid var(--gold); /* Linha dourada à esquerda */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.faq-question {
+    display: block;
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.faq-answer {
+    display: block;
+    color: #ddd;
+    font-size: 1rem;
+    line-height: 1.4;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Cerveja | Royal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/detalhe.css">
+    
+    <script src="/js/detalhe.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="home.html" style="text-decoration:none; color:var(--gold);">CERVEJARIA <span style="color:white;">ROYAL</span></a></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Voltar ao Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container detail-container">
+        <div class="product-wrapper">
+            
+            <div class="product-image">
+                <img id="detail-img" src="" alt="Imagem Cerveja">
+            </div>
+
+            <div class="product-info">
+                <span id="detail-style" class="tag-style">Estilo</span>
+                <h1 id="detail-name">Nome da Cerveja</h1>
+                
+                <div class="detail-meta">
+                    <span class="detail-price" id="detail-price">0,00€</span>
+                    <span class="detail-rating" id="detail-rating">0.0 ⭐</span>
+                </div>
+
+                <hr class="section-divider" style="margin: 20px 0; width: 100%;">
+
+                <h3>Descrição</h3>
+                <p id="detail-desc">Carregando informações...</p>
+
+                <h3>Sabores & Notas</h3>
+                <div id="detail-flavors" class="flavors-grid">
+                    </div>
+                <div id="detail-faq" class="faq-container"></div>
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Cervejaria Royal. Tradição e Qualidade.</p>
+    </footer>
+
+</body>
+</html>

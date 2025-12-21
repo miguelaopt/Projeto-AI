@@ -16,6 +16,7 @@
     
     <script src="/js/home.js" defer></script>
     <script type="text/babel" src="/react/home_react.js" defer></script>
+    <script src="/js/translation.js"></script>
 
 </head>
 <body>
@@ -24,48 +25,53 @@
         <div class="logo">CERVEJARIA <span style="color:white;">ROYAL</span></div>
         <nav>
             <ul>
-                <li><a href="#">Cervejas</a></li>
-                <li><a href="#">Países</a></li>
-                <li><a href="#">Estilos</a></li>
-                <li><a href="#">Rankings</a></li>
+                <li><a href="#" data-lang="menu_beers">Cervejas</a></li>
+                <li><a href="#" data-lang="menu_countries">Países</a></li>
+                <li><a href="#" data-lang="menu_styles">Estilos</a></li>
+                <li><a href="#" data-lang="menu_rankings">Rankings</a></li>
+
+                <li class="lang-switch">
+                    <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇬🇧</button>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
         
-        <h1 class="section-title">Destaques da Semana</h1>
+        <h1 class="section-title" data-lang="section-highlights">Destaques da Semana</h1>
 
         <div class="slideshow-container">
             
             <div class="fade-slides fade">
                 <img src="/img/super_1.jpeg" alt="Super Bock">
                 <div class="text-slide">
-                    <h2>Descubra a SuperBock</h2>
-                    <p>Melhor cerveja de Portugal votada por especialistas</p>
+                    <h2 data-lang="slide1_title">Descubra a SuperBock</h2>
+                    <p data-lang="slide1_desc">Melhor cerveja de Portugal votada por especialistas</p>
                 </div>
             </div>
 
             <div class="fade-slides fade">
                 <img src="/img/sagres_1.png" alt="Sagres">
                 <div class="text-slide">
-                    <h2>Refresque-se com uma Sagres</h2>
-                    <p>Disponivel também sem álcool para todos</p>
+                    <h2 data-lang="slide2_title">Refresque-se com uma Sagres</h2>
+                    <p data-lang="slide2_desc">Disponivel também sem álcool para todos</p>
                 </div>
             </div>
 
             <div class="fade-slides fade">
                 <img src="/img/heineken_1.jpg" alt="Heineken">
                 <div class="text-slide">
-                    <h2>Os originais: Heineken Original</h2>
-                    <p>Brinde com amigos e celebre com a cerveja mais conhecida do mundo</p>
+                    <h2 data-lang="slide3_title">Os originais: Heineken Original</h2>
+                    <p data-lang="slide3_desc">Brinde com amigos e celebre com a cerveja mais conhecida do mundo</p>
                 </div>
             </div>
 
         </div>
         <hr class="section-divider">
         <div class="beer-grid">
-            
+        <a href="detalhe.html?id=1" class="beer-card-link">
             <div class="beer-card">
                 <div class="card-image-container">
                     <img src="/img/heineken_1.jpg" alt="Imperial Stout">
@@ -79,7 +85,8 @@
                     </div>
                 </div>
             </div>
-            
+        </a>
+        <a href="detalhe.html?id=2" class="beer-card-link">
             <div class="beer-card">
                 <div class="card-image-container">
                     <img src="/img/sagres.png" alt="Golden IPA">
@@ -93,7 +100,7 @@
                     </div>
                 </div>
             </div>
-
+        </a>
             <div class="beer-card">
                 <div class="card-image-container">
                     <img src="/img/superbock.png" alt="Golden IPA">
@@ -154,13 +161,12 @@
 
     <section class="about-section">
         <div class="about-content">
-            <h2 class="section-title" style="border:none; margin-bottom: 20px;">A Nossa Tradição</h2>
-            <p>
-                Desde 1998, a Cervejaria Royal dedica-se á apresentação de cervejas de excelência.
+            <h2 class="section-title" style="border:none; margin-bottom: 20px;" data-lang="section_about_title">A Nossa Tradição</h2>
+            <p data-lang="section_about_text1">Desde 1998, a Cervejaria Royal dedica-se á apresentação de cervejas de excelência.
                 Pode encontrar uma vasta seleção de cervejas nacionais e internacionais, cuidadosamente selecionadas para os verdadeiros apreciadores.
                 Vamos oferecer uma experiência única, onde cada cerveja é uma celebração da tradição e da inovação.
             </p>
-            <p>
+            <p data-lang="section_about_text2">
                 O nosso serviço é dedicado a proporcionar momentos inesquecíveis, seja para uma reunião casual com amigos ou uma celebração especial.
             </p>
         </div>
@@ -173,15 +179,15 @@
 
     <section class="info-bar">
         <div class="info-item">
-            <h3>📍 Onde Estamos</h3>
+            <h3 data-lang="info_where_title">📍 Onde Estamos</h3>
             <p>Rua da Cevada, 123<br>Lisboa, Portugal</p>
         </div>
         <div class="info-item">
-            <h3>🕒 Horários</h3>
-            <p>Seg - Sex: 16h - 23h<br>Sáb - Dom: 14h - 02h</p>
+            <h3 data-lang="info_hours_title">🕒 Horários</h3>
+            <p data-lang="info_hours_desc">Seg - Sex: 16h - 23h<br>Sáb - Dom: 14h - 02h</p>
         </div>
         <div class="info-item">
-            <h3>📞 Reservas</h3>
+            <h3 data-lang="info_res_title">📞 Reservas</h3>
             <p>+351 912 345 678<br>reservas@royalbeer.pt</p>
         </div>
     </section>
@@ -191,7 +197,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Cervejaria Royal. Tradição e Qualidade.</p>
+        <p data-lang="footer_copy">&copy; 2024 Cervejaria Royal. Tradição e Qualidade.</p>
     </footer>
 
 </body>
