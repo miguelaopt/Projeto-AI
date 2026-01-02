@@ -429,24 +429,28 @@ input:focus, select:focus, textarea:focus {
 }
 
 .lang-btn {
-    background: transparent;
-    border: 1px solid #444;
+    /* Fundo mais claro para melhor contraste */
+    background-color: #333; 
+    color: #eee; 
+    border: 1px solid #555;
     cursor: pointer;
     font-size: 1.2rem;
-    padding: 5px;
-    border-radius: 4px;
-    transition: all 0.3s;
-    opacity: 0.5; /* Meio apagado quando não selecionado */
+    padding: 8px 12px; /* Aumentei um pouco o padding */
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    opacity: 1; /* Removemos a opacidade de 0.5 para ver melhor */
 }
 
 .lang-btn:hover {
-    opacity: 1;
+    background-color: #444;
     border-color: var(--gold);
+    color: var(--white);
 }
 
 .lang-btn.active {
-    opacity: 1;
+    background-color: var(--gold); /* Fundo dourado quando ativo */
+    color: var(--bg-dark); /* Texto escuro para leitura fácil no dourado */
     border-color: var(--gold);
-    background-color: rgba(242, 183, 5, 0.1);
-    transform: scale(1.1);
+    font-weight: bold;
+    transform: scale(1.05);
 }

@@ -1,3 +1,5 @@
+/* js/detalhe.js */
+
 // Base de Dados de Cervejas
 const beerDatabase = [
     {
@@ -11,39 +13,90 @@ const beerDatabase = [
             <strong>Origem:</strong> Holanda <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br>
             <strong>Temperatura ideal:</strong> 3–5 °C <br><br>
-            A Heineken Original é uma lager premium icónica... (o resto da sua descrição mantem-se igual) ...
-            Ideal para acompanhar carnes grelhadas, hambúrgueres, pizzas, comida asiática leve, snacks salgados ou simplesmente para ser apreciada bem fresca em qualquer ocasião.
+            A Heineken Original é uma lager premium icónica conhecida pela sua garrafa verde e estrela vermelha. 
+            Ideal para acompanhar carnes grelhadas ou snacks.
         `,
         flavors: ["Malte Suave", "Cereais", "Herbal", "Refrescante"],
-        // 👇 NOVO: Array de perguntas frequentes / alergénios
         faq: [
-            {
-                pergunta: "Contém Glúten?",
-                resposta: "<strong>Sim.</strong> A Heineken é produzida com malte de cevada, que contém glúten naturalmente. Não é adequada para celíacos."
-            },
-            {
-                pergunta: "É adequada para Veganos?",
-                resposta: "<strong>Sim.</strong> A Heineken não utiliza isinglass (cola de peixe) ou outros produtos de origem animal no processo de clarificação."
-            },
-            {
-                pergunta: "Informação sobre Alergénios",
-                resposta: "Contém: <strong>Cevada</strong>."
-            }
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim.</strong> Contém malte de cevada." },
+            { pergunta: "Vegan?", resposta: "<strong>Sim.</strong>" }
         ]
     },
-    // ... Mantenha as outras cervejas como estavam ...
     {
         id: 2,
         name: "Sagres Original",
-        style: "Pilsner",
+        style: "Lager",
         price: "1,50€",
         rating: 4.2,
         img: "/img/sagres.png",
-        desc: "A cerveja líder em Portugal...",
-        flavors: ["Lúpulo", "Seca", "Equilibrada"]
-        // Nota: Como não adicionei 'faq' aqui, a secção não vai aparecer na Sagres
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 5,0% vol <br><br>
+            A Sagres é uma cerveja lager portuguesa de cor dourada clara e espuma branca persistente.
+             Destaca-se pelo seu sabor fresco e equilibrado, sendo ideal para consumir bem fresca e acompanhar momentos de convívio e refeições leves.
+        `,
+        flavors: ["Lúpulo", "Seca", "Malte"]
     },
-    // ... restante da base de dados ...
+    {
+        id: 3,
+        name: "Super Bock",
+        style: "Lager",
+        price: "1,50€",
+        rating: 4.9,
+        img: "/img/superbock.png",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 5,2% vol <br><br>
+            [Insira aqui a descrição da Super Bock]. Vencedora de dezenas de medalhas de ouro, é conhecida pelo seu sabor autêntico.
+        `,
+        flavors: ["Encorpada", "Malte", "Frutada"],
+        faq: []
+    },
+    {
+        id: 4,
+        name: "Erdinger Weissbier Alkoholfrei",
+        style: "Wheat Ale (Sem Álcool)",
+        price: "2,50€",
+        rating: 4.1,
+        img: "/img/erdinger_alk.png",
+        desc: `
+            <strong>Origem:</strong> Alemanha <br>
+            <strong>Conteúdo alcoólico:</strong> < 0,5% vol <br><br>
+            [Insira aqui a descrição da Erdinger]. Uma cerveja de trigo isótica e regeneradora, perfeita para depois do desporto.
+        `,
+        flavors: ["Trigo", "Banana", "Cravinho", "Cítrico"],
+        faq: []
+    },
+    {
+        id: 5,
+        name: "Baron Des Cédres IPA",
+        style: "West Coast IPA",
+        price: "6,00€",
+        rating: 4.6,
+        img: "/img/baronipa.png",
+        desc: `
+            <strong>Origem:</strong> Canadá (Microcervejaria) <br>
+            <strong>Conteúdo alcoólico:</strong> 7,0% vol <br><br>
+            [Insira aqui a descrição da Baron IPA]. Uma West Coast IPA com amargor pronunciado e notas de pinho.
+        `,
+        flavors: ["Pinho", "Resinoso", "Amargo", "Toranja"],
+        faq: []
+    },
+    {
+        id: 6,
+        name: "Hofbräu München",
+        style: "Lager Hell",
+        price: "2,60€",
+        rating: 4.3,
+        img: "/img/hofbrau_og.jpg",
+        desc: `
+            <strong>Origem:</strong> Alemanha <br>
+            <strong>Conteúdo alcoólico:</strong> 5,1% vol <br><br>
+            [Insira aqui a descrição da Hofbräu]. A cerveja oficial de Munique, com séculos de tradição bávara.
+        `,
+        flavors: ["Pão", "Mel", "Floral", "Suave"],
+        faq: []
+    }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -64,21 +117,21 @@ document.addEventListener("DOMContentLoaded", () => {
         // Sabores
         const flavorsContainer = document.getElementById("detail-flavors");
         flavorsContainer.innerHTML = ''; 
-        beer.flavors.forEach(flavor => {
-            const span = document.createElement("span");
-            span.className = "flavor-tag";
-            span.innerText = flavor;
-            flavorsContainer.appendChild(span);
-        });
+        if(beer.flavors) {
+            beer.flavors.forEach(flavor => {
+                const span = document.createElement("span");
+                span.className = "flavor-tag";
+                span.innerText = flavor;
+                flavorsContainer.appendChild(span);
+            });
+        }
 
-        // 👇 LÓGICA NOVA: Alergénios e FAQ
+        // Alergénios e FAQ
         const faqContainer = document.getElementById("detail-faq");
-        faqContainer.innerHTML = ''; // Limpar container
+        faqContainer.innerHTML = ''; 
 
         if (beer.faq && beer.faq.length > 0) {
-            // Adiciona título se houver perguntas
-            faqContainer.innerHTML = '<hr class="section-divider" style="margin: 30px 0; width: 100%;"><h3>Informações Nutricionais</h3>';
-            
+            faqContainer.innerHTML = '<hr class="section-divider" style="margin: 30px 0; width: 100%;"><h3>Informações Úteis</h3>';
             beer.faq.forEach(item => {
                 const div = document.createElement("div");
                 div.className = "faq-item";
