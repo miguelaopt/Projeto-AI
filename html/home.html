@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cervejaria Royal</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/home.css">
-    
     <script src="/js/home.js" defer></script>
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
@@ -23,14 +19,15 @@
 <body>
 
    <header>
+    <!-- Logo e navegação -->
     <div class="logo">
         <a href="home.html" style="text-decoration:none; color:var(--gold);">
             CERVEJARIA <span style="color:white;">ROYAL</span>
         </a>
     </div>
-
+    <!-- Data e hora (Puxa do js no fim da pagina) -->
     <div id="date-time-display"></div>
-
+    <!-- Botões de idioma e outras paginas-->
     <nav>
         <ul>
             <li><a href="cervejas.html" data-lang="menu_beers">Cervejas</a></li>
@@ -41,11 +38,11 @@
         </ul>
     </nav>
 </header>
-
+<!-- Conteúdo principal da página -->
     <main class="container">
         
         <h1 class="section-title" data-lang="section-highlights">Destaques da Semana</h1>
-
+        <!-- Slideshow de imagens -->
         <div class="slideshow-container">
             
             <div class="fade-slides fade">
@@ -74,6 +71,7 @@
 
         </div>
         <hr class="section-divider">
+        <!-- Cards das cervejas em destaque -->
         <div class="beer-grid">
     <a href="detalhe.html?id=1" class="beer-card-link">
         <div class="beer-card">
@@ -172,7 +170,7 @@
     </a>
 </div>
         <hr class="section-divider">
-
+    <!-- Seção Sobre a "Empresa"-->
     <section class="about-section">
         <div class="about-content">
             <h2 class="section-title" style="border:none; margin-bottom: 20px;" data-lang="section_about_title">A Nossa Tradição</h2>
@@ -185,29 +183,27 @@
             </p>
         </div>
         <div class="about-image">
-            <img src="/img/super_1.jpeg" alt="Barris de Cerveja">
+            <img src="/img/super_1.jpeg" alt="tchin tchin">
         </div>
     </section>
 
     <hr class="section-divider">
-
+    <!-- Seção de Informações Adicionais -->
     <section class="info-bar">
-        <div class="info-item">
-            <h3 data-lang="info_where_title">📍 Onde Estamos</h3>
-            <p>Rua da Cevada, 123<br>Lisboa, Portugal</p>
-        </div>
-        <div class="info-item">
-            <h3 data-lang="info_hours_title">🕒 Horários</h3>
-            <p data-lang="info_hours_desc">Seg - Sex: 16h - 23h<br>Sáb - Dom: 14h - 02h</p>
-        </div>
-        <div class="info-item">
-            <h3 data-lang="info_res_title">📞 Reservas</h3>
-            <p>+351 912 345 678<br>reservas@royalbeer.pt</p>
-        </div>
-    </section>
+    <div class="info-item">
+        <h3 data-lang="info_where_title">📍 Onde Estamos</h3>
+        <p>Rua da Cevada, 123<br>Lisboa, Portugal</p>
+    </div>
 
-    <div id="react-contact-root"></div>
-
+    <div class="info-item">
+        <h3 data-lang="info_social_title">📱 Redes Sociais</h3>
+        <p>
+            <a href="https://instagram.com" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:bold;">Instagram</a>
+            <span style="color: #555; margin: 0 10px;">|</span>
+            <a href="https://facebook.com" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:bold;">Facebook</a>
+        </p>
+    </div>
+</section>
     </main>
 
     <footer>
@@ -215,8 +211,6 @@
     </footer>
 
     <!-- Script para atualizar a data e hora -->
-    <script src="/js/cervejas.js"></script>
-
     <script>
         function updateDateTime() {
             const display = document.getElementById('date-time-display');

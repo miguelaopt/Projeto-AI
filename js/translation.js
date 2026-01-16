@@ -1,6 +1,9 @@
-/* js/translations.js */
+//Ficheiro serve para guardar as traduções do site
+//Resto das traducoes estão dentro nos ficheiros js/html
 
-const translations = {
+//Colocar window translation para ser visivel para o contact e assim podemos mudar o idioma
+
+window.translations = {
     pt: {
         // Menu
         menu_beers: "Cervejas",
@@ -23,24 +26,27 @@ const translations = {
 
         // Info Bar
         info_where_title: "📍 Onde Estamos",
-        info_hours_title: "🕒 Horários",
-        info_hours_desc: "Seg - Sex: 16h - 23h<br>Sáb - Dom: 14h - 02h",
-        info_res_title: "📞 Reservas",
+        info_social_title: "📱 Redes Sociais",
         
         // Footer
-        footer_copy: "2024 Cervejaria Royal. Tradição e Qualidade.",
+        footer_copy: "2026 Cervejaria Royal. Tradição e Qualidade.",
 
         // Campos do Formulário React
+        // os campos ja tao atualizados, mandar para la
         form_title: "Fale Connosco",
         form_name: "Nome Completo:",
         form_motive: "Motivo:",
+        form_email: "Email:",      
+        form_phone: "Telefone:",   
         form_msg: "A sua Mensagem:",
         form_btn: "Enviar Mensagem"
     },
+    //Em ingles
     en: {
         // Menu
         menu_beers: "Beers",
         menu_contact: "Contact",
+
         // Slides
         slide1_title: "Discover SuperBock",
         slide1_desc: "Portugal's best beer voted by experts",
@@ -49,7 +55,7 @@ const translations = {
         slide3_title: "The Originals: Heineken Original",
         slide3_desc: "Toast with friends and celebrate with the world's most famous beer",
 
-        // Sections
+        // Secções
         section_highlights: "Highlights of the Week",
         section_about_title: "Our Tradition",
         section_about_text1: "Since 1998, Royal Brewery has been dedicated to presenting excellent beers. You can find a vast selection of national and international beers, carefully selected for true connoisseurs.",
@@ -58,48 +64,51 @@ const translations = {
 
         // Info Bar
         info_where_title: "📍 Where We Are",
-        info_hours_title: "🕒 Opening Hours",
-        info_hours_desc: "Mon - Fri: 4pm - 11pm<br>Sat - Sun: 2pm - 2am",
-        info_res_title: "📞 Reservations",
+        info_social_title: "📱 Follow Us",
 
         // Footer
-        footer_copy: "2024 Royal Brewery. Tradition and Quality.",
+        footer_copy: "2026 Royal Brewery. Tradition and Quality.",
 
-        // React Form Fields
+        // Campos do Formulário React
+        // os campos ja tao atualizados, mandar para la
         form_title: "Contact Us",
         form_name: "Full Name:",
         form_motive: "Reason:",
+        form_email: "Email:",    
+        form_phone: "Phone:",    
         form_msg: "Your Message:",
         form_btn: "Send Message"
     }
 };
 
+// funçao base para mudar o idioma
+// dps ver isto (ta feito)
+
 function changeLanguage(lang) {
-    // 1. Guardar a preferência
+    // Guardar a preferência
     localStorage.setItem('royal_lang', lang);
 
-    // 2. Atualizar todos os elementos com o atributo 'data-lang'
+    //para todos os elementos com data-lang, ativa a tradução correta
     const elements = document.querySelectorAll('[data-lang]');
     
     elements.forEach(el => {
         const key = el.getAttribute('data-lang');
-        if (translations[lang][key]) {
-            // Se tiver HTML (como o <br>), usa innerHTML, senão innerText
-            if(translations[lang][key].includes("<")) {
-                el.innerHTML = translations[lang][key];
+        if (window.translations[lang][key]) {
+            if(window.translations[lang][key].includes("<")) {
+                el.innerHTML = window.translations[lang][key];
             } else {
-                el.innerText = translations[lang][key];
+                el.innerText = window.translations[lang][key];
             }
         }
     });
 
-    // 3. Atualizar Botões (Visual)
+    // Atualiza os botoes visulamente
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
         if(btn.dataset.btnLang === lang) btn.classList.add('active');
     });
 
-    // 4. Disparar evento para o React saber que mudou
+    //Segue para o react
     window.dispatchEvent(new Event('languageChange'));
 }
 

@@ -1,4 +1,5 @@
 /* --- VARIÁVEIS CSS (Paleta e Fontes) --- */
+/* Cores e as bases para a pagina inteira */
 :root {
     --bg-dark: #121212;
     --bg-card: #1E1E1E;
@@ -18,10 +19,10 @@ body {
     background-color: var(--bg-dark);
     color: var(--white);
     font-family: var(--font-text);
-    padding-top: 80px; /* Espaço para o header fixo */
+    padding-top: 80px; 
 }
 
-/* --- HEADER FIXO --- */
+/* HEADER FIXO */
 header {
     position: fixed;
     top: 0;
@@ -235,7 +236,7 @@ footer {
     /* Gradiente que vai de transparente para Dourado e volta para transparente */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gold), rgba(0, 0, 0, 0));
     margin: 50px auto; /* Espaçamento em cima e em baixo */
-    width: 80%; /* A linha ocupa 80% da largura do container */
+    width: 80%;
     opacity: 0.7;
 }
 
@@ -264,7 +265,7 @@ footer {
     flex: 1;
     height: 350px;
     border: 1px solid var(--gold);
-    padding: 10px; /* Cria uma moldura */
+    padding: 10px; 
 }
 
 .about-image img {
@@ -297,23 +298,12 @@ footer {
     line-height: 1.6;
 }
 
-/* Responsividade (Para telemóveis) */
-@media (max-width: 768px) {
-    .about-section {
-        flex-direction: column;
-    }
-    .info-bar {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
 /* --- FORMULÁRIO DE CONTACTO (REACT) --- */
 .contact-section {
     max-width: 800px;
     margin: 40px auto 80px auto;
     padding: 30px;
-    background-color: #1a1a1a; /* Ligeiramente mais claro que o fundo */
+    background-color: #1a1a1a;
     border: 1px solid #333;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -361,7 +351,6 @@ input:focus, select:focus, textarea:focus {
     border-color: var(--gold);
 }
 
-/* Estilo de Erro */
 .error-border {
     border-color: #ff4444 !important;
 }
@@ -416,9 +405,9 @@ input:focus, select:focus, textarea:focus {
 
 /* --- REMOVER SUBLINHADO DOS LINKS DOS CARDS --- */
 .beer-grid a {
-    text-decoration: none; /* Remove o sublinhado */
-    color: inherit;        /* Mantém a cor branca/original do texto e não azul */
-    display: block;        /* Garante que o link ocupa a área toda do card */
+    text-decoration: none; 
+    color: inherit;        
+    display: block;        
 }
 
 /* --- BOTÕES DE IDIOMA --- */
@@ -429,7 +418,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 .lang-btn {
-    /* Fundo mais claro para melhor contraste */
     background-color: #333; 
     color: #eee; 
     border: 1px solid #555;
@@ -438,7 +426,7 @@ input:focus, select:focus, textarea:focus {
     padding: 8px 12px; /* Aumentei um pouco o padding */
     border-radius: 6px;
     transition: all 0.3s ease;
-    opacity: 1; /* Removemos a opacidade de 0.5 para ver melhor */
+    opacity: 1; /* Removi a opacidade de 0.5 para ver melhor */
 }
 
 .lang-btn:hover {

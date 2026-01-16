@@ -1,6 +1,8 @@
-/* js/detalhe.js */
-
-// Base de Dados de Cervejas
+//Base de dados das cervejas
+//Inclui todas as informações necessarias para o detalhe
+//Em ingles e em portugues
+//Inclui tambem logica para mudança de idioma
+//Idiomas colocados separamente
 
 const beerDatabase = [
     {
@@ -354,7 +356,7 @@ const beerDatabase = [
     }
 ];
 
-/* Lógica para carregar e traduzir os detalhes */
+//Lógica para carregar e traduzir os detalhes
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const beerId = parseInt(params.get("id"));
@@ -400,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 beer.faq.forEach(item => {
                     const div = document.createElement("div");
                     div.className = "faq-item";
-                    // Tenta buscar tradução, se não existir usa PT
+                    // Tenta ir buscar a tradução, se não existir usa PT
                     const q = item.pergunta[lang] || item.pergunta['pt'] || item.pergunta;
                     const a = item.resposta[lang] || item.resposta['pt'] || item.resposta;
                     

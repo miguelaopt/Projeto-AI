@@ -1,7 +1,11 @@
+//Fichairo para listar todas as cervejas na pagina de cervejas
+//Inclui logica de pesquisa e filtragem
+//Inclui logica para mudar o idioma
+
 document.addEventListener("DOMContentLoaded", () => {
     
     // Simulação de dados (Extendendo a base de dados para ter 12 itens)
-    // Pode adicionar mais se quiser, aqui dupliquei alguns para chegar a 12
+    //podemos meter mais, 12 deve chegar para mostrar a funcionalidade
     const baseBeers = [
         { id: 1, name: "Heineken Original", style: "Lager ", img: "/img/heineken_1.jpg", price: "2,50€" },
         { id: 2, name: "Sagres Original", style: "Lager(Pilsner)", img: "/img/sagres.png", price: "2,00€" },
@@ -17,12 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 12, name: "Praxis", style: "Lager", img: "/img/praxis.png", price: "2,20€" }
     ];
 
-    // Gerar 12 cervejas (repetindo a lista base)
+    // Gerar 12 cervejas
     let allBeers = [];
     while (allBeers.length < 12) {
         allBeers = allBeers.concat(baseBeers);
     }
     allBeers = allBeers.slice(0, 12); // Garante exatamente 12
+    //se for para mudar o n de cervejas, mudar aqui
 
     // Adiciona IDs únicos virtuais para não dar erro na listagem
     allBeers = allBeers.map((beer, index) => ({ ...beer, uniqueId: index }));
@@ -44,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Mantemos o link para o detalhe original (usando o ID real do produto)
             card.href = `detalhe.html?id=${beer.id}`; 
             card.className = "beer-card-link";
-            
+            // Os cards sao iguais ao do home
             card.innerHTML = `
                 <div class="beer-card">
                     <div class="card-image-container">
