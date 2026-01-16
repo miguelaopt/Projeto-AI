@@ -10,17 +10,29 @@ const beerDatabase = [
         price: "2,50€",
         rating: 4.4,
         img: "/img/heineken_1.jpg",
-        desc: `
-            <strong>Origem:</strong> Holanda <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Holanda <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br>
             <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             A Heineken Original é uma lager premium icónica conhecida pela sua garrafa verde e estrela vermelha. 
-            Ideal para acompanhar carnes grelhadas ou snacks.
-        `,
-        flavors: ["Malte Suave", "Cereais","Notas Herbais de Lúpulo"],
+            Ideal para acompanhar carnes grelhadas ou snacks.`,
+            en: `<strong>Origin:</strong> Netherlands <br>
+            <strong>Alcohol content:</strong> 5.0% vol <br>
+            <strong>Ideal temperature:</strong> 5-7 °C <br><br>
+            Heineken Original is an iconic premium lager known for its green bottle and red star. 
+            Ideal to accompany grilled meats or snacks.`
+        },
+        flavors: {
+            pt: ["Malte Suave", "Cereais","Notas Herbais de Lúpulo"],
+            en: ["Soft Malt", "Cereals","Herbal Hop Notes"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { 
+                pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, 
+                resposta: { pt: "Sim", en: "Yes" },
+                pergunta: { pt: "Vegan?", en: "Vegan?" },
+                resposta: { pt: "Sim", en: "Yes" }
+            }
         ]
     },
     {
@@ -30,17 +42,30 @@ const beerDatabase = [
         price: "2,00€",
         rating: 4.7,
         img: "/img/sagres.png",
-        desc: `
+        desc: {
+            pt: `
             <strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br><br>
             <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             A Sagres é uma cerveja lager portuguesa de cor dourada clara e espuma branca persistente.
-            Destaca-se pelo seu sabor fresco e equilibrado, sendo ideal para consumir bem fresca e acompanhar momentos de convívio e refeições leves.
-        `,
-        flavors: ["Cereais", "Malte Suave", "Leve Amargor"],
+            Destaca-se pelo seu sabor fresco e equilibrado, sendo ideal para consumir bem fresca e acompanhar momentos de convívio e refeições leves.`,
+            en: `
+            <strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 5.0% vol <br><br>
+            <strong>Ideal temperature:</strong> 5-7 °C <br><br>
+            Sagres is a Portuguese lager with a light golden color and persistent white foam.
+            It stands out for its fresh and balanced flavor, ideal to be consumed well chilled and to accompany moments of socializing and light meals.`
+        },
+        flavors: {
+            pt: ["Cereais", "Malte Suave", "Leve Amargor"],
+            en: ["Cereals", "Soft Malt", "Light Bitterness"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" },
+            resposta: { pt: "Sim", en: "Yes" },
+            pergunta: { pt: "Vegan?", en: "Vegan?" },
+            resposta: { pt: "Sim", en: "Yes" } 
+            }
         ]
     },
     {
@@ -50,18 +75,27 @@ const beerDatabase = [
         price: "2,20€",
         rating: 4.9,
         img: "/img/superbock.png",
-        desc: `
-            <strong>Origem:</strong> Portugal <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5,2% vol <br><br>
             <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             Vencedora de dezenas de medalhas de ouro, é conhecida pelo seu sabor autêntico.
             A cerveja autêntica de excelência para os teus momentos de convívio com os amigos, a
-            verdadeira melhor cerveja de Portugal"
-        `,
-        flavors: ["Encorpada", "Malte", "Frutada"],
+            verdadeira melhor cerveja de Portugal`,
+            en: `<strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 5.2% vol <br><br>
+            <strong>Ideal temperature:</strong> 5-7 °C <br><br>
+            Winner of dozens of gold medals, it is known for its authentic flavor.
+            The authentic and excellent beer for your moments of socializing with friends, the
+            true best beer in Portugal`
+        },
+        flavors: {
+            pt: ["Encorpada", "Malte", "Frutada"],
+            en: ["Full-bodied", "Malt", "Fruity"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -71,17 +105,25 @@ const beerDatabase = [
         price: "3,50€",
         rating: 4.9,
         img: "/img/erdinger_alk.png",
-        desc: `
-            <strong>Origem:</strong> Alemanha <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Alemanha <br>
             <strong>Conteúdo alcoólico:</strong> 5,3% vol <br><br>
             <strong>Temperatura ideal:</strong> 6-8 °C <br><br>
             A Erdinger Weissbier é uma cerveja de trigo isótica e regeneradora, perfeita para depois do desporto.
-            Cerveja de trigo tradicional alemã, não filtrada.
-        `,
-        flavors: ["Pão", "Banana", "Cravinho", "Levedura"],
+            Cerveja de trigo tradicional alemã, não filtrada.`,
+            en: `<strong>Origin:</strong> Germany <br>
+            <strong>Alcohol content:</strong> 5.3% vol <br><br>
+            <strong>Ideal temperature:</strong> 6-8 °C <br><br>
+            Erdinger Weissbier is an isotonic and regenerating wheat beer, perfect for after sports.
+            Traditional unfiltered German wheat beer.`
+        },
+        flavors: {
+            pt: ["Pão", "Banana", "Cravinho", "Levedura"],
+            en: ["Bread", "Banana", "Allspice", "Yeast"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -91,17 +133,25 @@ const beerDatabase = [
         price: "3,80€",
         rating: 4.4,
         img: "/img/baronipa.png",
-        desc: `
-            <strong>Origem:</strong> Canadá (Microcervejaria) <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Canadá (Microcervejaria) <br>
             <strong>Conteúdo alcoólico:</strong> 6,5% vol <br><br>
             <strong>Temperatura ideal:</strong> 7-9 °C <br><br>
             A Baron Des Cédres IPA é uma West Coast IPA com amargor pronunciado e notas de pinho.
-            Uma IPA aromática e refrescante, ideal para os amantes de cervejas lupuladas.
-        `,
-        flavors: ["Citrinos", "Frutas Tropicais", "Lupulada",],
+            Uma IPA aromática e refrescante, ideal para os amantes de cervejas lupuladas.`,
+            en: `<strong>Origin:</strong> Canada (Microbrewery) <br>
+            <strong>Alcohol content:</strong> 6.5% vol <br><br>
+            <strong>Ideal temperature:</strong> 7-9 °C <br><br>
+            Baron Des Cédres IPA is a West Coast IPA with pronounced bitterness and pine notes.
+            An aromatic and refreshing IPA, ideal for hop beer lovers.`
+        },
+        flavors: {
+            pt: ["Citrinos", "Frutas Tropicais", "Lupulada"],
+            en: ["Citrus", "Tropical Fruits", "Hopped"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -111,17 +161,25 @@ const beerDatabase = [
         price: "3,00€",
         rating: 4.0,
         img: "/img/corona_extra.jpg",
-        desc: `
-            <strong>Origem:</strong> México <br>
+        desc: {
+            pt: `<strong>Origem:</strong> México <br>
             <strong>Conteúdo alcoólico:</strong> 4,5% vol <br><br>
             <strong>Temperatura ideal:</strong> 3-5 °C <br><br>
             Lager leve e muito refrescante, perfeita para dias quentes.
-            Tradicionalmente servida com uma fatia de limão na boca da garrafa para realçar o sabor.
-        `,
-        flavors: ["Cereias", "Milho", "Leve Doçura", "Suave"],
+            Tradicionalmente servida com uma fatia de limão na boca da garrafa para realçar o sabor.`,
+            en: `<strong>Origin:</strong> Mexico <br>
+            <strong>Alcohol content:</strong> 4.5% vol <br><br>
+            <strong>Ideal temperature:</strong> 3-5 °C <br><br>
+            Light and very refreshing lager, perfect for hot days.
+            Traditionally served with a slice of lime in the bottle neck to enhance the flavor.`
+        },
+        flavors: {
+            pt: ["Cereaias", "Milho", "Leve Doçura", "Suave"],
+            en: ["Cereals", "Corn", "Light Sweetness", "Smooth"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -131,17 +189,25 @@ const beerDatabase = [
         price: "2,20€",
         rating: 4.6,
         img: "/img/sagres_preta.jpg",
-        desc: `
-            <strong>Origem:</strong> Portugal <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 4,3% vol <br><br>
             <strong>Temperatura ideal:</strong> 6-8 °C <br><br>
             Lager escura de perfil suave e corpo médio, com notas de malte torrado e caramelo.
-            Ideal para acompanhar pratos de carne e sobremesas à base de chocolate.
-        `,
-        flavors: ["Caramelo", "Malte Torrado", "Notas de Café",],
+            Ideal para acompanhar pratos de carne e sobremesas à base de chocolate.`,
+            en: `<strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 4.3% vol <br><br>
+            <strong>Ideal temperature:</strong> 6-8 °C <br><br>
+            Dark lager with a smooth profile and medium body, with notes of roasted malt and caramel.
+            Ideal to accompany meat dishes and chocolate-based desserts.`
+        },
+        flavors: {
+            pt: ["Caramelo", "Malte Torrado", "Notas de Café"],
+            en: ["Caramel", "Roasted Malt", "Coffee Notes"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -151,17 +217,25 @@ const beerDatabase = [
         price: "2,50€",
         rating: 4.7,
         img: "/img/superbock_abadia.png",
-        desc: `
-            <strong>Origem:</strong> Portugal <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 6% vol <br><br>
             <strong>Temperatura ideal:</strong> 8-10°C <br><br>
             Cerveja de inspiração belga, com sabor encorpado e notas frutadas e condimentadas.
-            Não filtrada e complexa, ideal para momentos especiais.
-        `,
-        flavors: ["Fruta madura", "Especiarias", "Caramelo", "Malte intenso"],
+            Não filtrada e complexa, ideal para momentos especiais.`,
+            en: `<strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 6% vol <br><br>
+            <strong>Ideal temperature:</strong> 8-10°C <br><br>
+            Belgian-inspired beer, with a full-bodied flavor and fruity and spiced notes.
+            Unfiltered and complex, ideal for special moments.`,
+        },
+        flavors: {
+            pt: ["Fruta madura", "Especiarias", "Caramelo", "Malte intenso"],
+            en: ["Ripe Fruit", "Spices", "Caramel", "Intense Malt"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -171,17 +245,25 @@ const beerDatabase = [
         price: "2,40€",
         rating: 4.8,
         img: "/img/superbock_stout.png",
-        desc: `
-            <strong>Origem:</strong> Portugal <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5% vol <br><br>
             <strong>Temperatura ideal:</strong> 8-10 °C <br><br>
             Stout cremosa e equilibrada, com notas de café e chocolate.
-            Ideal para acompanhar sobremesas ou como digestivo após as refeições.
-        `,
-        flavors: ["Café", "Chocolate", "Malte Torrado"],
+            Ideal para acompanhar sobremesas ou como digestivo após as refeições.`,
+            en: `<strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 5% vol <br><br>
+            <strong>Ideal temperature:</strong> 8-10 °C <br><br>
+            Creamy and balanced stout, with notes of coffee and chocolate.
+            Ideal to accompany desserts or as a digestive after meals.`
+        },
+        flavors: {
+            pt: ["Café", "Chocolate", "Malte Torrado"],
+            en: ["Coffee", "Chocolate", "Roasted Malt"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -191,17 +273,27 @@ const beerDatabase = [
         price: "2,00€",
         rating: 3.9,
         img: "/img/sagres_0.jpg",
-        desc: `
+        desc: {
+            pt: `
             <strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 0.0% vol <br><br>
             <strong>Temperatura ideal:</strong> 4-6 °C <br><br>
             Sagres sem álcool mantém o sabor fresco e leve da Sagres original.
-            Ideal para quem procura uma opção sem álcool.
-        `,
-        flavors: ["Malte suave", "Cereais", "Leve Amargor"],
+            Ideal para quem procura uma opção sem álcool.`,
+            en: `
+            <strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 0.0% vol <br><br>
+            <strong>Ideal temperature:</strong> 4-6 °C <br><br>
+            Sagres non-alcoholic maintains the fresh and light flavor of the original Sagres.
+            Ideal for those looking for a non-alcoholic option.`
+        },
+        flavors: {
+            pt: ["Malte suave", "Cereais", "Leve Amargor"],
+            en: ["Soft Malt", "Cereals", "Light Bitterness"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -211,17 +303,25 @@ const beerDatabase = [
         price: "2,50€",
         rating: 4.1,
         img: "/img/superbock_sem_gluten.jpeg",
-        desc: `
-            <strong>Origem:</strong> Portugal <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5% vol <br><br>
             <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             Cerveja lager especialmente desenvolvida para pessoas com intolerância ao glúten.
-            Mantém o sabor autêntico da Super Bock original.
-        `,
-        flavors: ["Malte suave", "Amargor Moderado"],
+            Mantém o sabor autêntico da Super Bock original.`,
+            en: `<strong>Origin:</strong> Portugal <br>
+            <strong>Alcohol content:</strong> 5% vol <br><br>
+            <strong>Ideal temperature:</strong> 5-7 °C <br><br>
+            Lager beer specially developed for people with gluten intolerance.
+            It maintains the authentic flavor of the original Super Bock.`
+        },
+        flavors: {
+            pt: ["Malte suave", "Amargor Moderado"],
+            en: ["Soft Malt", "Moderate Bitterness"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Nao</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Não", en: "No" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -231,66 +331,95 @@ const beerDatabase = [
         price: "2,20€",
         rating: 4.3,
         img: "/img/praxis.png",
-        desc: `
-            <strong>Origem:</strong> Portugal(Açores) <br>
+        desc: {
+            pt: `<strong>Origem:</strong> Portugal(Açores) <br>
             <strong>Conteúdo alcoólico:</strong> 4.7% vol <br><br>
             <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             Lager fresca e leve, produzida nos Açores com ingredientes selecionados.
-            Ideal para acompanhar pratos de peixe e marisco.
-        `,
-        flavors: ["Malte leve", "Cereais"],
+            Ideal para acompanhar pratos de peixe e marisco.`,
+            en: `<strong>Origin:</strong> Portugal(Açores) <br>
+            <strong>Alcohol content:</strong> 4.7% vol <br><br>
+            <strong>Ideal temperature:</strong> 5-7 °C <br><br>
+            Fresh and light lager, produced in the Azores with selected ingredients.
+            Ideal to accompany fish and seafood dishes.`
+        },
+        flavors: {
+            pt: ["Malte leve", "Cereais"],
+            en: ["Light Malt", "Cereals"]
+        },
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
-            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     }
 ];
 
+/* Lógica para carregar e traduzir os detalhes */
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const beerId = parseInt(params.get("id"));
     const beer = beerDatabase.find(b => b.id === beerId);
 
     if (beer) {
-        document.title = `${beer.name} | Royal`;
-        
-        document.getElementById("detail-img").src = beer.img;
-        document.getElementById("detail-name").innerText = beer.name;
-        document.getElementById("detail-style").innerText = beer.style;
-        document.getElementById("detail-price").innerText = beer.price;
-        document.getElementById("detail-rating").innerText = `${beer.rating} ⭐`;
-        document.getElementById("detail-desc").innerHTML = beer.desc;
+        // Função para desenhar a página
+        function renderBeerDetail() {
+            // Obter idioma atual
+            const lang = localStorage.getItem('royal_lang') || 'pt';
 
-        // Sabores
-        const flavorsContainer = document.getElementById("detail-flavors");
-        flavorsContainer.innerHTML = ''; 
-        if(beer.flavors) {
-            beer.flavors.forEach(flavor => {
-                const span = document.createElement("span");
-                span.className = "flavor-tag";
-                span.innerText = flavor;
-                flavorsContainer.appendChild(span);
-            });
+            document.title = `${beer.name} | Royal`;
+            document.getElementById("detail-img").src = beer.img;
+            document.getElementById("detail-name").innerText = beer.name;
+            document.getElementById("detail-style").innerText = beer.style;
+            document.getElementById("detail-price").innerText = beer.price;
+            document.getElementById("detail-rating").innerText = `${beer.rating} ⭐`;
+            
+            // Texto Descritivo (Escolhe PT ou EN)
+            document.getElementById("detail-desc").innerHTML = beer.desc[lang] || beer.desc['pt'];
+
+            // Sabores
+            const flavorsContainer = document.getElementById("detail-flavors");
+            flavorsContainer.innerHTML = ''; 
+            const flavorsList = beer.flavors[lang] || beer.flavors['pt']; // Escolhe lista correta
+            
+            if(flavorsList) {
+                flavorsList.forEach(flavor => {
+                    const span = document.createElement("span");
+                    span.className = "flavor-tag";
+                    span.innerText = flavor;
+                    flavorsContainer.appendChild(span);
+                });
+            }
+
+            // FAQ
+            const faqContainer = document.getElementById("detail-faq");
+            faqContainer.innerHTML = ''; 
+            const infoTitle = lang === 'pt' ? 'Informações Úteis' : 'Useful Info';
+
+            if (beer.faq && beer.faq.length > 0) {
+                faqContainer.innerHTML = `<hr class="section-divider" style="margin: 30px 0; width: 100%;"><h3>${infoTitle}</h3>`;
+                beer.faq.forEach(item => {
+                    const div = document.createElement("div");
+                    div.className = "faq-item";
+                    // Tenta buscar tradução, se não existir usa PT
+                    const q = item.pergunta[lang] || item.pergunta['pt'] || item.pergunta;
+                    const a = item.resposta[lang] || item.resposta['pt'] || item.resposta;
+                    
+                    div.innerHTML = `
+                        <span class="faq-question">${q}</span>
+                        <span class="faq-answer">${a}</span>
+                    `;
+                    faqContainer.appendChild(div);
+                });
+            }
         }
 
-        // Alergénios e FAQ
-        const faqContainer = document.getElementById("detail-faq");
-        faqContainer.innerHTML = ''; 
+        // 1. Renderizar ao carregar
+        renderBeerDetail();
 
-        if (beer.faq && beer.faq.length > 0) {
-            faqContainer.innerHTML = '<hr class="section-divider" style="margin: 30px 0; width: 100%;"><h3>Informações Úteis</h3>';
-            beer.faq.forEach(item => {
-                const div = document.createElement("div");
-                div.className = "faq-item";
-                div.innerHTML = `
-                    <span class="faq-question">${item.pergunta}</span>
-                    <span class="faq-answer">${item.resposta}</span>
-                `;
-                faqContainer.appendChild(div);
-            });
-        }
+        // 2. Ouvir mudança de idioma e renderizar novamente
+        window.addEventListener('languageChange', renderBeerDetail);
 
     } else {
-        document.querySelector(".product-wrapper").innerHTML = "<h2>Cerveja não encontrada. <a href='home.html'>Voltar</a></h2>";
+        document.querySelector(".product-wrapper").innerHTML = "<h2 style='color:white'>Cerveja não encontrada.</h2>";
     }
 });
