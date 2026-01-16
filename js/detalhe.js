@@ -29,12 +29,8 @@ const beerDatabase = [
             en: ["Soft Malt", "Cereals","Herbal Hop Notes"]
         },
         faq: [
-            { 
-                pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, 
-                resposta: { pt: "Sim", en: "Yes" },
-                pergunta: { pt: "Vegan?", en: "Vegan?" },
-                resposta: { pt: "Sim", en: "Yes" }
-            }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
@@ -63,11 +59,8 @@ const beerDatabase = [
             en: ["Cereals", "Soft Malt", "Light Bitterness"]
         },
         faq: [
-            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" },
-            resposta: { pt: "Sim", en: "Yes" },
-            pergunta: { pt: "Vegan?", en: "Vegan?" },
-            resposta: { pt: "Sim", en: "Yes" } 
-            }
+            { pergunta: { pt: "Contém Glúten?", en: "Contains Gluten?" }, resposta: { pt: "Sim", en: "Yes" } },
+            { pergunta: { pt: "Vegan?", en: "Vegan?" }, resposta: { pt: "Sim", en: "Yes" } }
         ]
     },
     {
