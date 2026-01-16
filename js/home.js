@@ -1,5 +1,12 @@
 //funcionalidade de slides ( moodle )
 
+// Inicia e atualiza
+document.addEventListener("DOMContentLoaded", updateDateTime);
+setInterval(updateDateTime, 1000);
+// Atualiza a cada segundo
+setInterval(updateDateTime, 1000);
+document.addEventListener("DOMContentLoaded", updateDateTime);
+
 document.addEventListener("DOMContentLoaded", function() {
     
     let slideIndex = 0;

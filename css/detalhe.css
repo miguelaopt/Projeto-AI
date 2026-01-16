@@ -161,3 +161,29 @@
     font-size: 1rem;
     line-height: 1.4;
 }
+
+/* --- ESTILO DATA E HORA --- */
+#date-time-display {
+    font-family: 'Roboto', monospace; /* Monospace ajuda a manter os números alinhados */
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo subtil */
+    padding: 8px 16px;
+    border-radius: 50px; /* Arredondado (Cápsula) */
+    border: 1px solid #333;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    
+    margin: 0 20px; /* Espaço entre Logo e Menu */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#date-time-display:hover {
+    border-color: var(--gold);
+    color: var(--white);
+    box-shadow: 0 0 10px rgba(242, 183, 5, 0.2); /* Brilho dourado ao passar o rato */
+}

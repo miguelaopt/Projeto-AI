@@ -15,28 +15,31 @@
     <link rel="stylesheet" href="/css/home.css">
     
     <script src="/js/home.js" defer></script>
-    <script type="text/babel" src="/react/home_react.js" defer></script>
     <script src="/js/translation.js"></script>
+    <script src="/js/datahora.js"></script>
 
 </head>
 <body>
 
-    <header>
-        <div class="logo">CERVEJARIA <span style="color:white;">ROYAL</span></div>
-        <nav>
-            <ul>
-                <li><a href="#" data-lang="menu_beers">Cervejas</a></li>
-                <li><a href="#" data-lang="menu_countries">Países</a></li>
-                <li><a href="#" data-lang="menu_styles">Estilos</a></li>
-                <li><a href="#" data-lang="menu_rankings">Rankings</a></li>
+   <header>
+    <div class="logo">
+        <a href="home.html" style="text-decoration:none; color:var(--gold);">
+            CERVEJARIA <span style="color:white;">ROYAL</span>
+        </a>
+    </div>
 
-                <li class="lang-switch">
-                    <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
-                    <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇬🇧</button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div id="date-time-display"></div>
+
+    <nav>
+        <ul>
+            <li><a href="cervejas.html" data-lang="menu_beers">Cervejas</a></li>
+            <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li> <li class="lang-switch">
+                <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">PT</button>
+                <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">EN</button>
+            </li>
+        </ul>
+    </nav>
+</header>
 
     <main class="container">
         
@@ -94,10 +97,10 @@
             </div>
             <div class="card-content">
                 <h3 class="beer-name">Sagres Original</h3>
-                <p class="beer-style">Lager</p>
+                <p class="beer-style">Lager(Pilsner)</p>
                 <div class="card-footer">
-                    <span class="rating">4.2 <span>⭐</span></span>
-                    <span class="price">1,50€</span>
+                    <span class="rating">4.7 <span>⭐</span></span>
+                    <span class="price">2.00€</span>
                 </div>
             </div>
         </div>
@@ -109,11 +112,11 @@
                 <img src="/img/superbock.png" alt="Super Bock">
             </div>
             <div class="card-content">
-                <h3 class="beer-name">Super Bock</h3>
+                <h3 class="beer-name">Super Bock Original</h3>
                 <p class="beer-style">Lager</p>
                 <div class="card-footer">
                     <span class="rating">4.9 <span>⭐</span></span>
-                    <span class="price">1,50€</span>
+                    <span class="price">2,20€</span>
                 </div>
             </div>
         </div>
@@ -126,7 +129,7 @@
             </div>
             <div class="card-content">
                 <h3 class="beer-name">Erdinger Weissbier</h3>
-                <p class="beer-style">Wheat Ale (S/ Álcool)</p>
+                <p class="beer-style">Weissbier(Cerveja de Trigo)</p>
                 <div class="card-footer">
                     <span class="rating">4.1 <span>⭐</span></span>
                     <span class="price">2,50€</span>
@@ -144,8 +147,8 @@
                 <h3 class="beer-name">Baron Des Cédres IPA</h3>
                 <p class="beer-style">West Coast IPA</p>
                 <div class="card-footer">
-                    <span class="rating">4.6 <span>⭐</span></span>
-                    <span class="price">6,00€</span>
+                    <span class="rating">4.4 <span>⭐</span></span>
+                    <span class="price">3,80€</span>
                 </div>
             </div>
         </div>
@@ -154,14 +157,14 @@
     <a href="detalhe.html?id=6" class="beer-card-link">
         <div class="beer-card">
             <div class="card-image-container">
-                <img src="/img/hofbrau_og.jpg" alt="Hofbrau">
+                <img src="/img/corona_extra.jpg" alt="Corona">
             </div>
             <div class="card-content">
-                <h3 class="beer-name">Hofbräu München</h3>
-                <p class="beer-style">Lager Hell</p>
+                <h3 class="beer-name">Corona Extra</h3>
+                <p class="beer-style">Lager</p>
                 <div class="card-footer">
-                    <span class="rating">4.3 <span>⭐</span></span>
-                    <span class="price">2,60€</span>
+                    <span class="rating">4.0 <span>⭐</span></span>
+                    <span class="price">3,00€</span>
                 </div>
             </div>
         </div>
@@ -207,8 +210,30 @@
     </main>
 
     <footer>
-        <p data-lang="footer_copy">&copy; 2024 Cervejaria Royal. Tradição e Qualidade.</p>
+        <p data-lang="footer_copy">2026 Cervejaria Royal. Tradição e Qualidade.</p>
     </footer>
+
+    <!-- Script para atualizar a data e hora -->
+    <script src="/js/cervejas.js"></script>
+
+    <script>
+        function updateDateTime() {
+            const display = document.getElementById('date-time-display');
+            if (display) {
+                const now = new Date();
+                const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateStr = now.toLocaleDateString('pt-PT', dateOptions);
+                const timeStr = now.toLocaleTimeString('pt-PT', timeOptions);
+                display.innerHTML = ` ${dateStr} &nbsp;|&nbsp;  ${timeStr}`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateDateTime);
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+    </body>
+</html>
 
 </body>
 </html>

@@ -4,10 +4,7 @@ const translations = {
     pt: {
         // Menu
         menu_beers: "Cervejas",
-        menu_countries: "Países",
-        menu_styles: "Estilos",
-        menu_rankings: "Rankings",
-        menu_login: "Login",
+        menu_contact: "Contacto",
         
         // Slides
         slide1_title: "Descubra a SuperBock",
@@ -31,7 +28,7 @@ const translations = {
         info_res_title: "📞 Reservas",
         
         // Footer
-        footer_copy: "&copy; 2024 Cervejaria Royal. Tradição e Qualidade.",
+        footer_copy: "2024 Cervejaria Royal. Tradição e Qualidade.",
 
         // Campos do Formulário React
         form_title: "Fale Connosco",
@@ -43,11 +40,7 @@ const translations = {
     en: {
         // Menu
         menu_beers: "Beers",
-        menu_countries: "Countries",
-        menu_styles: "Styles",
-        menu_rankings: "Rankings",
-        menu_login: "Login",
-
+        menu_contact: "Contact",
         // Slides
         slide1_title: "Discover SuperBock",
         slide1_desc: "Portugal's best beer voted by experts",
@@ -70,7 +63,7 @@ const translations = {
         info_res_title: "📞 Reservations",
 
         // Footer
-        footer_copy: "&copy; 2024 Royal Brewery. Tradition and Quality.",
+        footer_copy: "2024 Royal Brewery. Tradition and Quality.",
 
         // React Form Fields
         form_title: "Contact Us",

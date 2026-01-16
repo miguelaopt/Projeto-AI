@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes da Cerveja | Royal</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Contacto | Royal</title>
     
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/detalhe.css">
     
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
-    <script src="/js/detalhe.js" defer></script>
+    <script type="text/babel"src="/react/contact_form.js" defer></script>
 </head>
 <body>
 
@@ -30,8 +30,9 @@
         <nav>
             <ul>
                 <li><a href="home.html">Início</a></li>
+                
                 <li><a href="cervejas.html" data-lang="menu_beers">Cervejas</a></li>
-                <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+                <li><a href="contacto.html" class="active-link" style="color:var(--gold);">Contacto</a></li>
 
                 <li class="lang-switch">
                     <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
@@ -41,37 +42,13 @@
         </nav>
     </header>
 
-    <main class="container detail-container">
-        <div style="margin-bottom: 20px;">
-            <a href="javascript:history.back()" style="color: #888; text-decoration: none;">&larr; Voltar</a>
-        </div>
-
-        <div class="product-wrapper">
-            
-            <div class="product-image">
-                <img id="detail-img" src="" alt="Imagem Cerveja">
-            </div>
-
-            <div class="product-info">
-                <span id="detail-style" class="tag-style">Estilo</span>
-                <h1 id="detail-name">Nome da Cerveja</h1>
-                
-                <div class="detail-meta">
-                    <span class="detail-price" id="detail-price">0,00€</span>
-                    <span class="detail-rating" id="detail-rating">0.0 ⭐</span>
-                </div>
-
-                <hr class="section-divider" style="margin: 20px 0; width: 100%;">
-
-                <h3>Descrição</h3>
-                <p id="detail-desc">Carregando informações...</p>
-
-                <h3>Sabores & Notas</h3>
-                <div id="detail-flavors" class="flavors-grid">
-                    </div>
-                
-                <div id="detail-faq" class="faq-container"></div>
-            </div>
+    <main class="container">
+        <div id="react-contact-root"></div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="home.html" style="color: #888; text-decoration: none; border-bottom: 1px solid #888; padding-bottom: 2px;">
+                &larr; Voltar ao Menu Principal
+            </a>
         </div>
     </main>
 
@@ -98,6 +75,5 @@
         setInterval(updateDateTime, 1000);
         updateDateTime(); 
     </script>
-
 </body>
 </html>

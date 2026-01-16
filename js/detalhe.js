@@ -1,101 +1,248 @@
 /* js/detalhe.js */
 
 // Base de Dados de Cervejas
+
 const beerDatabase = [
     {
         id: 1,
         name: "Heineken Original",
-        style: "Lager Premium",
+        style: "Lager",
         price: "2,50€",
         rating: 4.4,
         img: "/img/heineken_1.jpg",
         desc: `
             <strong>Origem:</strong> Holanda <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br>
-            <strong>Temperatura ideal:</strong> 3–5 °C <br><br>
+            <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             A Heineken Original é uma lager premium icónica conhecida pela sua garrafa verde e estrela vermelha. 
             Ideal para acompanhar carnes grelhadas ou snacks.
         `,
-        flavors: ["Malte Suave", "Cereais", "Herbal", "Refrescante"],
+        flavors: ["Malte Suave", "Cereais","Notas Herbais de Lúpulo"],
         faq: [
-            { pergunta: "Contém Glúten?", resposta: "<strong>Sim.</strong> Contém malte de cevada." },
-            { pergunta: "Vegan?", resposta: "<strong>Sim.</strong>" }
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
         ]
     },
     {
         id: 2,
         name: "Sagres Original",
-        style: "Lager",
-        price: "1,50€",
-        rating: 4.2,
+        style: "Lager(Pilsner)",
+        price: "2,00€",
+        rating: 4.7,
         img: "/img/sagres.png",
         desc: `
             <strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br><br>
+            <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
             A Sagres é uma cerveja lager portuguesa de cor dourada clara e espuma branca persistente.
-             Destaca-se pelo seu sabor fresco e equilibrado, sendo ideal para consumir bem fresca e acompanhar momentos de convívio e refeições leves.
+            Destaca-se pelo seu sabor fresco e equilibrado, sendo ideal para consumir bem fresca e acompanhar momentos de convívio e refeições leves.
         `,
-        flavors: ["Lúpulo", "Seca", "Malte"]
+        flavors: ["Cereais", "Malte Suave", "Leve Amargor"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
     },
     {
         id: 3,
-        name: "Super Bock",
-        style: "Lager",
-        price: "1,50€",
+        name: "Super Bock Original",
+        style: "Lager(Pilsner)",
+        price: "2,20€",
         rating: 4.9,
         img: "/img/superbock.png",
         desc: `
             <strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5,2% vol <br><br>
-            [Insira aqui a descrição da Super Bock]. Vencedora de dezenas de medalhas de ouro, é conhecida pelo seu sabor autêntico.
+            <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
+            Vencedora de dezenas de medalhas de ouro, é conhecida pelo seu sabor autêntico.
+            A cerveja autêntica de excelência para os teus momentos de convívio com os amigos, a
+            verdadeira melhor cerveja de Portugal"
         `,
         flavors: ["Encorpada", "Malte", "Frutada"],
-        faq: []
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
     },
     {
         id: 4,
-        name: "Erdinger Weissbier Alkoholfrei",
-        style: "Wheat Ale (Sem Álcool)",
-        price: "2,50€",
-        rating: 4.1,
+        name: "Erdinger Weissbier",
+        style: "Weissbier(Cerveja de Trigo)",
+        price: "3,50€",
+        rating: 4.9,
         img: "/img/erdinger_alk.png",
         desc: `
             <strong>Origem:</strong> Alemanha <br>
-            <strong>Conteúdo alcoólico:</strong> < 0,5% vol <br><br>
-            [Insira aqui a descrição da Erdinger]. Uma cerveja de trigo isótica e regeneradora, perfeita para depois do desporto.
+            <strong>Conteúdo alcoólico:</strong> 5,3% vol <br><br>
+            <strong>Temperatura ideal:</strong> 6-8 °C <br><br>
+            A Erdinger Weissbier é uma cerveja de trigo isótica e regeneradora, perfeita para depois do desporto.
+            Cerveja de trigo tradicional alemã, não filtrada.
         `,
-        flavors: ["Trigo", "Banana", "Cravinho", "Cítrico"],
-        faq: []
+        flavors: ["Pão", "Banana", "Cravinho", "Levedura"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
     },
     {
         id: 5,
         name: "Baron Des Cédres IPA",
-        style: "West Coast IPA",
-        price: "6,00€",
-        rating: 4.6,
+        style: "IPA(India Pale Ale)",
+        price: "3,80€",
+        rating: 4.4,
         img: "/img/baronipa.png",
         desc: `
             <strong>Origem:</strong> Canadá (Microcervejaria) <br>
-            <strong>Conteúdo alcoólico:</strong> 7,0% vol <br><br>
-            [Insira aqui a descrição da Baron IPA]. Uma West Coast IPA com amargor pronunciado e notas de pinho.
+            <strong>Conteúdo alcoólico:</strong> 6,5% vol <br><br>
+            <strong>Temperatura ideal:</strong> 7-9 °C <br><br>
+            A Baron Des Cédres IPA é uma West Coast IPA com amargor pronunciado e notas de pinho.
+            Uma IPA aromática e refrescante, ideal para os amantes de cervejas lupuladas.
         `,
-        flavors: ["Pinho", "Resinoso", "Amargo", "Toranja"],
-        faq: []
+        flavors: ["Citrinos", "Frutas Tropicais", "Lupulada",],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
     },
     {
         id: 6,
-        name: "Hofbräu München",
-        style: "Lager Hell",
-        price: "2,60€",
-        rating: 4.3,
-        img: "/img/hofbrau_og.jpg",
+        name: "Corona Extra",
+        style: "Lager",
+        price: "3,00€",
+        rating: 4.0,
+        img: "/img/corona_extra.jpg",
         desc: `
-            <strong>Origem:</strong> Alemanha <br>
-            <strong>Conteúdo alcoólico:</strong> 5,1% vol <br><br>
-            [Insira aqui a descrição da Hofbräu]. A cerveja oficial de Munique, com séculos de tradição bávara.
+            <strong>Origem:</strong> México <br>
+            <strong>Conteúdo alcoólico:</strong> 4,5% vol <br><br>
+            <strong>Temperatura ideal:</strong> 3-5 °C <br><br>
+            Lager leve e muito refrescante, perfeita para dias quentes.
+            Tradicionalmente servida com uma fatia de limão na boca da garrafa para realçar o sabor.
         `,
-        flavors: ["Pão", "Mel", "Floral", "Suave"],
-        faq: []
+        flavors: ["Cereias", "Milho", "Leve Doçura", "Suave"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 7,
+        name: "Sagres Preta",
+        style: "Dark Lager",
+        price: "2,20€",
+        rating: 4.6,
+        img: "/img/sagres_preta.jpg",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 4,3% vol <br><br>
+            <strong>Temperatura ideal:</strong> 6-8 °C <br><br>
+            Lager escura de perfil suave e corpo médio, com notas de malte torrado e caramelo.
+            Ideal para acompanhar pratos de carne e sobremesas à base de chocolate.
+        `,
+        flavors: ["Caramelo", "Malte Torrado", "Notas de Café",],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 8,
+        name: "Super Bock Abadia",
+        style: "Belgian Abbey Ale",
+        price: "2,50€",
+        rating: 4.7,
+        img: "/img/superbock_abadia.png",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 6% vol <br><br>
+            <strong>Temperatura ideal:</strong> 8-10°C <br><br>
+            Cerveja de inspiração belga, com sabor encorpado e notas frutadas e condimentadas.
+            Não filtrada e complexa, ideal para momentos especiais.
+        `,
+        flavors: ["Fruta madura", "Especiarias", "Caramelo", "Malte intenso"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 9,
+        name: "Super Bock Stout",
+        style: "Stout",
+        price: "2,40€",
+        rating: 4.8,
+        img: "/img/superbock_stout.png",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 5% vol <br><br>
+            <strong>Temperatura ideal:</strong> 8-10 °C <br><br>
+            Stout cremosa e equilibrada, com notas de café e chocolate.
+            Ideal para acompanhar sobremesas ou como digestivo após as refeições.
+        `,
+        flavors: ["Café", "Chocolate", "Malte Torrado"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 10,
+        name: "Sagres 0,0%",
+        style: "Lager sem Alcoól",
+        price: "2,00€",
+        rating: 3.9,
+        img: "/img/sagres_0.jpg",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 0.0% vol <br><br>
+            <strong>Temperatura ideal:</strong> 4-6 °C <br><br>
+            Sagres sem álcool mantém o sabor fresco e leve da Sagres original.
+            Ideal para quem procura uma opção sem álcool.
+        `,
+        flavors: ["Malte suave", "Cereais", "Leve Amargor"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 11,
+        name: "Super Bock Sem Glúten",
+        style: "Lager sem Glúten",
+        price: "2,50€",
+        rating: 4.1,
+        img: "/img/superbock_sem_gluten.jpeg",
+        desc: `
+            <strong>Origem:</strong> Portugal <br>
+            <strong>Conteúdo alcoólico:</strong> 5% vol <br><br>
+            <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
+            Cerveja lager especialmente desenvolvida para pessoas com intolerância ao glúten.
+            Mantém o sabor autêntico da Super Bock original.
+        `,
+        flavors: ["Malte suave", "Amargor Moderado"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Nao</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
+    },
+    {
+        id: 12,
+        name: "Praxis",
+        style: "Lager",
+        price: "2,20€",
+        rating: 4.3,
+        img: "/img/praxis.png",
+        desc: `
+            <strong>Origem:</strong> Portugal(Açores) <br>
+            <strong>Conteúdo alcoólico:</strong> 4.7% vol <br><br>
+            <strong>Temperatura ideal:</strong> 5-7 °C <br><br>
+            Lager fresca e leve, produzida nos Açores com ingredientes selecionados.
+            Ideal para acompanhar pratos de peixe e marisco.
+        `,
+        flavors: ["Malte leve", "Cereais"],
+        faq: [
+            { pergunta: "Contém Glúten?", resposta: "<strong>Sim</strong>" },
+            { pergunta: "Vegan?", resposta: "<strong>Sim</strong>" }
+        ]
     }
 ];
 

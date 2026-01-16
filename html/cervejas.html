@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes da Cerveja | Royal</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Cervejas | Royal</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/detalhe.css">
     
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
-    <script src="/js/detalhe.js" defer></script>
-</head>
+    <script src="/js/cervejas.js"></script>
+    </head>
 <body>
 
     <header>
@@ -30,7 +26,8 @@
         <nav>
             <ul>
                 <li><a href="home.html">Início</a></li>
-                <li><a href="cervejas.html" data-lang="menu_beers">Cervejas</a></li>
+                
+                <li><a href="cervejas.html" class="active-link" style="color:var(--gold);">Cervejas</a></li>
                 <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
 
                 <li class="lang-switch">
@@ -41,38 +38,24 @@
         </nav>
     </header>
 
-    <main class="container detail-container">
-        <div style="margin-bottom: 20px;">
-            <a href="javascript:history.back()" style="color: #888; text-decoration: none;">&larr; Voltar</a>
-        </div>
-
-        <div class="product-wrapper">
+    <main class="container">
+        
+        <section style="text-align: center; margin-bottom: 40px;">
+            <h1 class="section-title" style="border:none; text-align:center;">O Nosso Catálogo</h1>
+            <p style="color: #ccc; max-width: 800px; margin: 0 auto 20px auto;">
+                Explore a nossa seleção premium. Desde as Lagers clássicas às IPAs artesanais, 
+                temos o sabor perfeito para cada momento. Utilize a pesquisa abaixo para encontrar a sua favorita.
+            </p>
             
-            <div class="product-image">
-                <img id="detail-img" src="" alt="Imagem Cerveja">
+            <input type="text" id="searchBar" placeholder="Pesquisar cerveja por nome..." 
+                   style="width: 100%; max-width: 500px; padding: 15px; border-radius: 30px; border: 2px solid var(--gold); background: #222; color: white; outline: none; text-align: center; font-size: 1rem;">
+        </section>
+
+        <hr class="section-divider">
+
+        <div class="beer-grid" id="beer-grid-container">
             </div>
 
-            <div class="product-info">
-                <span id="detail-style" class="tag-style">Estilo</span>
-                <h1 id="detail-name">Nome da Cerveja</h1>
-                
-                <div class="detail-meta">
-                    <span class="detail-price" id="detail-price">0,00€</span>
-                    <span class="detail-rating" id="detail-rating">0.0 ⭐</span>
-                </div>
-
-                <hr class="section-divider" style="margin: 20px 0; width: 100%;">
-
-                <h3>Descrição</h3>
-                <p id="detail-desc">Carregando informações...</p>
-
-                <h3>Sabores & Notas</h3>
-                <div id="detail-flavors" class="flavors-grid">
-                    </div>
-                
-                <div id="detail-faq" class="faq-container"></div>
-            </div>
-        </div>
     </main>
 
     <footer>
