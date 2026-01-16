@@ -11,7 +11,7 @@ const beerDatabase = [
         style: "Lager",
         price: "2,50€",
         rating: 4.4,
-        img: "/img/heineken_1.jpg",
+        img: "/img/heineken_original.png",
         desc: {
             pt: `<strong>Origem:</strong> Holanda <br>
             <strong>Conteúdo alcoólico:</strong> 5,0% vol <br>
@@ -39,7 +39,7 @@ const beerDatabase = [
         style: "Lager(Pilsner)",
         price: "2,00€",
         rating: 4.7,
-        img: "/img/sagres.png",
+        img: "/img/sagres_original.png",
         desc: {
             pt: `
             <strong>Origem:</strong> Portugal <br>
@@ -155,7 +155,7 @@ const beerDatabase = [
         style: "Lager",
         price: "3,00€",
         rating: 4.0,
-        img: "/img/corona_extra.jpg",
+        img: "/img/corona_extra.png",
         desc: {
             pt: `<strong>Origem:</strong> México <br>
             <strong>Conteúdo alcoólico:</strong> 4,5% vol <br><br>
@@ -183,7 +183,7 @@ const beerDatabase = [
         style: "Dark Lager",
         price: "2,20€",
         rating: 4.6,
-        img: "/img/sagres_preta.jpg",
+        img: "/img/sagres_preta.png",
         desc: {
             pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 4,3% vol <br><br>
@@ -267,7 +267,7 @@ const beerDatabase = [
         style: "Lager sem Alcoól",
         price: "2,00€",
         rating: 3.9,
-        img: "/img/sagres_0.jpg",
+        img: "/img/sagres0.png",
         desc: {
             pt: `
             <strong>Origem:</strong> Portugal <br>
@@ -297,7 +297,7 @@ const beerDatabase = [
         style: "Lager sem Glúten",
         price: "2,50€",
         rating: 4.1,
-        img: "/img/superbock_sem_gluten.jpeg",
+        img: "/img/superbock_semgluten.png",
         desc: {
             pt: `<strong>Origem:</strong> Portugal <br>
             <strong>Conteúdo alcoólico:</strong> 5% vol <br><br>

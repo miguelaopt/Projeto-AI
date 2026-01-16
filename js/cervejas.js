@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Simulação de dados (Extendendo a base de dados para ter 12 itens)
     //podemos meter mais, 12 deve chegar para mostrar a funcionalidade
     const baseBeers = [
-        { id: 1, name: "Heineken Original", style: "Lager ", img: "/img/heineken_1.jpg", price: "2,50€" },
-        { id: 2, name: "Sagres Original", style: "Lager(Pilsner)", img: "/img/sagres.png", price: "2,00€" },
-        { id: 3, name: "Super Bock Original", style: "Lager(Pilsner)", img: "/img/superbock.png", price: "2,20€" },
-        { id: 4, name: "Erdinger Weissbier", style: "Weissbier(Cerveja de Trigo)", img: "/img/erdinger_alk.png", price: "3,50€" },
-        { id: 5, name: "Baron Des Cédres IPA", style: "IPA(India Pale Ale)", img: "/img/baronipa.png", price: "3,80€" },
-        { id: 6, name: "Corona Extra", style: "Lager", img: "/img/corona_extra.jpg", price: "3,00€" },
-        { id: 7, name: "Sagres Preta", style: "Dark Lager", img: "/img/sagres_preta.jpg", price: "2,20€" },
-        { id: 8, name: "Super Bock Abadia", style: "Belgian Abbey Ale", img: "/img/superbock_abadia.png", price: "2,50€" },
-        { id: 9, name: "Super Bock Stout", style: "Stout", img: "/img/superbock_stout.png", price: "2,40€" },
-        { id: 10, name: "Sagres 0,0%", style: "Lager sem Álcool", img: "/img/sagres0.jpg", price: "2,00€" },
-        { id: 11, name: "Super Bock sem Glúten", style: "Lager sem Glúten", img: "/img/superbock_semgluten.jpeg", price: "2,50€" },
-        { id: 12, name: "Praxis", style: "Lager", img: "/img/praxis.png", price: "2,20€" }
+        { id: 1, name: "Heineken Original", style: "Lager ", img: "/img/home/heineken.jpg", price: "2,50€" },
+        { id: 2, name: "Sagres Original", style: "Lager(Pilsner)", img: "/img/home/sagres.png", price: "2,00€" },
+        { id: 3, name: "Super Bock Original", style: "Lager(Pilsner)", img: "/img/home/super.jpg", price: "2,20€" },
+        { id: 4, name: "Erdinger Weissbier", style: "Weissbier(Cerveja de Trigo)", img: "/img/home/erdinger.jpg", price: "3,50€" },
+        { id: 5, name: "Baron Des Cédres IPA", style: "IPA(India Pale Ale)", img: "/img/home/baron.png", price: "3,80€" },
+        { id: 6, name: "Corona Extra", style: "Lager", img: "/img/home/corona.png", price: "3,00€" },
+        { id: 7, name: "Sagres Preta", style: "Dark Lager", img: "/img/home/preta_web.png", price: "2,20€" },
+        { id: 8, name: "Super Bock Abadia", style: "Belgian Abbey Ale", img: "/img/home/abadia.jpg", price: "2,50€" },
+        { id: 9, name: "Super Bock Stout", style: "Stout", img: "/img/home/stout.png", price: "2,40€" },
+        { id: 10, name: "Sagres 0,0%", style: "Lager sem Álcool", img: "/img/home/sagres-00.jpg", price: "2,00€" },
+        { id: 11, name: "Super Bock sem Glúten", style: "Lager sem Glúten", img: "/img/home/supersem.jpg", price: "2,50€" },
+        { id: 12, name: "Praxis", style: "Lager", img: "/img/home/praxishome.jpg", price: "2,20€" }
     ];
 
     // Gerar 12 cervejas
