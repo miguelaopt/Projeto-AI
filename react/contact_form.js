@@ -106,7 +106,6 @@ const ContactForm = () => {
                         <select name="motivo" value={formData.motivo} onChange={handleChange}>
                             <option value="informacao">{lang === 'pt' ? "Informação" : "Information"}</option>
                             <option value="reclamacao">{lang === 'pt' ? "Reclamação" : "Complaint"}</option>
-                            <option value="reserva">{lang === 'pt' ? "Reserva" : "Reservation"}</option>
                         </select>
                     </div>
                     <div className="form-group">
