@@ -1,9 +1,7 @@
-// Ficheiro para listar todas as cervejas na pagina de cervejas com Filtros Avançados e Leitura de URL
-
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Base de dados das cervejas
     const baseBeers = [
+        // ... (Mantém a tua lista de cervejas igual) ...
         { id: 1, name: "Heineken Original", style: "Lager", img: "/img/home/heineken.jpg", price: "2,50€" },
         { id: 2, name: "Sagres Original", style: "Lager (Pilsner)", img: "/img/home/sagres.png", price: "2,00€" },
         { id: 3, name: "Super Bock Original", style: "Lager (Pilsner)", img: "/img/home/super.jpg", price: "2,20€" },
@@ -27,22 +25,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Povoar o Dropdown de Estilos
     const uniqueStyles = [...new Set(allBeers.map(b => b.style.split('(')[0].trim()))];
-    
     uniqueStyles.sort().forEach(style => {
         const option = document.createElement("option");
-        option.value = style; // O valor deve corresponder ao texto para o filtro funcionar
+        option.value = style;
         option.innerText = style;
         styleFilter.appendChild(option);
     });
 
-    // 2. Função de Renderização
+    // 2. Obter tradução atual (função auxiliar)
+    function getTrans(key) {
+        const lang = localStorage.getItem('royal_lang') || 'pt';
+        return (window.translations && window.translations[lang] && window.translations[lang][key]) 
+               ? window.translations[lang][key] 
+               : "";
+    }
+
+    // 3. Função de Renderização Atualizada
     function renderBeers(list) {
         gridContainer.innerHTML = "";
         
         if(list.length === 0) {
+            // Usa a função de tradução para a mensagem de erro
+            const msg = getTrans('no_beers_found') || "Nenhuma cerveja encontrada.";
             gridContainer.innerHTML = `
                 <div style='width:100%; text-align:center; padding: 40px;'>
-                    <h3 style='color:#777;'>Nenhuma cerveja encontrada com esses filtros.</h3>
+                    <h3 style='color:#777;'>${msg}</h3>
                 </div>`;
             return;
         }
@@ -70,38 +77,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Função Principal de Filtro
+    // 4. Função Principal de Filtro
     function filterBeers() {
         const searchTerm = searchBar.value.toLowerCase();
         const selectedStyle = styleFilter.value.toLowerCase();
         const isGlutenFree = glutenFilter.checked;
 
         const filtered = allBeers.filter(beer => {
-            // Filtro de Texto
             const matchText = beer.name.toLowerCase().includes(searchTerm) || 
                               beer.style.toLowerCase().includes(searchTerm);
-            
-            // Filtro de Estilo (Dropdown)
             const matchStyle = selectedStyle === "" || beer.style.toLowerCase().includes(selectedStyle);
-            
-            // Filtro Sem Glúten (Checkbox)
             let matchGluten = true;
             if (isGlutenFree) {
                 matchGluten = beer.style.toLowerCase().includes("sem glúten") || 
                               beer.name.toLowerCase().includes("sem glúten") ||
                               beer.name.toLowerCase().includes("gluten free");
             }
-
             return matchText && matchStyle && matchGluten;
         });
 
         renderBeers(filtered);
     }
+
+    // 5. Atualizar textos dinâmicos (Placeholder e Mensagens) quando o idioma muda
+    function updateDynamicTexts() {
+        const placeholderText = getTrans('search_placeholder');
+        if(placeholderText) searchBar.placeholder = placeholderText;
+        
+        // Re-executa o filtro para atualizar a mensagem de "Nenhum resultado" se estiver visível
+        filterBeers();
+    }
+
+    // Listeners
     searchBar.addEventListener("keyup", filterBeers);
     styleFilter.addEventListener("change", filterBeers);
     glutenFilter.addEventListener("change", filterBeers);
 
-    //permitir que os submenos funcionamem
+    // Listener para mudança de idioma (Disparado pelo translation.js)
+    window.addEventListener('languageChange', updateDynamicTexts);
+
+    // Inicialização
     const params = new URLSearchParams(window.location.search);
     const category = params.get('cat');
 
@@ -113,8 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (category === 'ipa') {
             styleFilter.value = "IPA";
         }
-        filterBeers();
-    } else {
-        renderBeers(allBeers);
     }
+    
+    // Executa uma vez para garantir que o placeholder está correto no arranque
+    updateDynamicTexts();
 });

@@ -10,53 +10,55 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/contacto.css">
     
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
-    <script type="text/babel"src="/react/contact_form.js" defer></script>
+    <script type="text/babel" src="/react/contact_form.js" defer></script>
     <link rel="icon" type="image/png" href="/icon/cr_icon.png">
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <a href="home.html" style="text-decoration:none; color:var(--gold);">
-                CERVEJARIA <span style="color:white;">ROYAL</span>
+            <a href="home.html" class="logo-link">
+                CERVEJARIA <span>ROYAL</span>
             </a>
         </div>
 
         <div id="date-time-display"></div>
 
         <nav>
-    <ul>
-        <li><a href="home.html">Início</a></li>
-        
-        <li>
-            <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
-            <ul class="submenu">
-                <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
-                <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
-                <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
-                <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                
+                <li>
+                    <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
+                    <ul class="submenu">
+                        <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
+                        <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
+                        <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
+                        <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+
+                <li class="lang-switch">
+                    <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
             </ul>
-        </li>
-
-        <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
-
-        <li class="lang-switch">
-            <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
-            <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
-        </li>
-    </ul>
-</nav>
+        </nav>
     </header>
 
     <main class="container">
         <div id="react-contact-root"></div>
         
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="home.html" style="color: #888; text-decoration: none; border-bottom: 1px solid #888; padding-bottom: 2px;">
+        <div class="back-link-container">
+            <a href="home.html" class="back-link" data-lang="back_to_menu">
                 &larr; Voltar ao Menu Principal
             </a>
         </div>
@@ -66,7 +68,6 @@
         <p data-lang="footer_copy">2026 Cervejaria Royal. Tradição e Qualidade.</p>
     </footer>
 
-    <!-- Script para atualizar a data e hora -->
     <script>
         function updateDateTime() {
             const display = document.getElementById('date-time-display');

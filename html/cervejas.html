@@ -6,13 +6,15 @@
     <title>Cervejas | Royal</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/cervejas.css">
     
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
     <script src="/js/cervejas.js"></script>
     <link rel="icon" type="image/png" href="/icon/cr_icon.png">
-    </head>
+</head>
 <body>
 
     <header>
@@ -24,54 +26,48 @@
 
         <div id="date-time-display"></div>
         <nav>
-    <ul>
-        <li><a href="home.html">Início</a></li>
-        
-        <li>
-            <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
-            <ul class="submenu">
-                <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
-                <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
-                <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
-                <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li>
+                    <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
+                    <ul class="submenu">
+                        <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
+                        <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
+                        <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
+                        <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+                <li class="lang-switch">
+                    <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
             </ul>
-        </li>
-
-        <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
-
-        <li class="lang-switch">
-            <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
-            <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
-        </li>
-    </ul>
-</nav>
+        </nav>
     </header>
 
     <main class="container">
         
-        <section style="text-align: center; margin-bottom: 40px;">
-            <h1 class="section-title" style="border:none; text-align:center;">O Nosso Catálogo</h1>
-            <p style="color: #ccc; max-width: 800px; margin: 0 auto 20px auto;">
+        <section class="catalog-header">
+            <h1 class="section-title" data-lang="catalog_title">O Nosso Catálogo</h1>
+            <p class="catalog-description" data-lang="catalog_intro">
                 Explore a nossa seleção premium. Desde as Lagers clássicas às IPAs artesanais, 
                 temos o sabor perfeito para cada momento. Utilize a pesquisa abaixo para encontrar a sua favorita.
             </p>
             
-            <input type="text" id="searchBar" placeholder="Pesquisar cerveja por nome..." 
-                   style="width: 100%; max-width: 500px; padding: 15px; border-radius: 30px; border: 2px solid var(--gold); background: #222; color: white; outline: none; text-align: center; font-size: 1rem;">
+            <input type="text" id="searchBar" class="search-input" placeholder="Pesquisar cerveja por nome...">
         </section>
 
-        <div class="filters-container" style="text-align: center; margin-top: 20px; display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap;">
-    
-    <select id="styleFilter" style="padding: 12px; border-radius: 5px; background: #222; color: white; border: 1px solid var(--gold); outline: none; cursor: pointer;">
-        <option value="">Todos os Estilos</option>
-        </select>
-    
-    <label style="color: #ccc; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 1rem;">
-        <input type="checkbox" id="glutenFilter" style="width: 18px; height: 18px; accent-color: var(--gold);">
-        Sem Glúten
-    </label>
-
-</div>
+        <div class="filters-container">
+            <select id="styleFilter" class="filter-select">
+                <option value="" data-lang="filter_all_styles">Todos os Estilos</option>
+            </select>
+            
+            <label class="filter-label">
+                <input type="checkbox" id="glutenFilter" class="filter-checkbox">
+                <span data-lang="filter_gluten_label">Sem Glúten</span>
+            </label>
+        </div>
 
         <hr class="section-divider">
 
@@ -83,8 +79,6 @@
     <footer>
         <p data-lang="footer_copy">2026 Cervejaria Royal. Tradição e Qualidade.</p>
     </footer>
-
-    <!-- Script para atualizar a data e hora -->
 
     <script>
         function updateDateTime() {

@@ -18,6 +18,13 @@ window.translations = {
         //Filtros
         filter_default_option: "Todos os Estilos",
         filter_gluten_label: "Sem Glúten",
+
+        //Pagina da cerveja
+        catalog_title: "O Nosso Catálogo",
+        catalog_intro: "Explore a nossa seleção premium. Desde as Lagers clássicas às IPAs artesanais, temos o sabor perfeito para cada momento. Utilize a pesquisa abaixo para encontrar a sua favorita.",
+        search_placeholder: "Pesquisar cerveja por nome...",
+        filter_all_styles: "Todos os Estilos",
+        no_beers_found: "Nenhuma cerveja encontrada com esses filtros.",
         
         // Slides
         slide1_title: "Descubra a SuperBock",
@@ -49,7 +56,10 @@ window.translations = {
         form_email: "Email:",      
         form_phone: "Telefone:",   
         form_msg: "A sua Mensagem:",
-        form_btn: "Enviar Mensagem"
+        form_btn: "Enviar Mensagem",
+
+        //Pagina contacto
+        back_to_menu: "← Voltar ao Menu Principal"
     },
     //Em ingles
     en: {
@@ -66,6 +76,13 @@ window.translations = {
         //Filtros
         filter_default_option: "All Styles",
         filter_gluten_label: "Gluten Free",
+
+        //Pagina da cerveja
+        catalog_title: "Our Catalog",
+        catalog_intro: "Explore our premium selection. From classic Lagers to craft IPAs, we have the perfect flavor for every moment. Use the search bar below to find your favorite.",
+        search_placeholder: "Search beer by name...",
+        filter_all_styles: "All Styles",
+        no_beers_found: "No beers found with these filters.",
 
         // Slides
         slide1_title: "Discover SuperBock",
@@ -97,7 +114,10 @@ window.translations = {
         form_email: "Email:",    
         form_phone: "Phone:",    
         form_msg: "Your Message:",
-        form_btn: "Send Message"
+        form_btn: "Send Message",
+
+        //Pagina contacto
+        back_to_menu: "← Back to Main Menu"
     }
 };
 
