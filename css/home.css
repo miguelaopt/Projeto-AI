@@ -22,7 +22,6 @@ body {
     padding-top: 80px; 
 }
 
-/* HEADER FIXO */
 header {
     position: fixed;
     top: 0;
@@ -37,6 +36,53 @@ header {
     padding: 0 5%;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+nav ul li {
+    position: relative; 
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%; /* Aparece logo abaixo do menu */
+    left: 0;
+    background-color: rgba(30, 30, 30, 0.98);
+    border-top: 3px solid var(--gold);
+    min-width: 180px;
+    flex-direction: column;
+    padding: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    gap: 0; 
+    z-index: 1100;
+}
+
+nav ul li:hover > ul {
+    display: flex;
+}
+
+nav ul li ul li {
+    width: 100%;
+    margin: 0;
+}
+
+nav ul li ul li a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    color: #ccc;
+    border-bottom: 1px solid #444;
+    transition: all 0.2s;
+}
+
+nav ul li ul li:last-child a {
+    border-bottom: none;
+}
+
+nav ul li ul li a:hover {
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    padding-left: 25px; 
 }
 
 .logo {

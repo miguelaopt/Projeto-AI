@@ -23,20 +23,28 @@
         </div>
 
         <div id="date-time-display"></div>
-
         <nav>
-            <ul>
-                <li><a href="home.html">Início</a></li>
-                
-                <li><a href="cervejas.html" class="active-link" style="color:var(--gold);">Cervejas</a></li>
-                <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
-
-                <li class="lang-switch">
-                    <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
-                    <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
-                </li>
+    <ul>
+        <li><a href="home.html">Início</a></li>
+        
+        <li>
+            <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
+            <ul class="submenu">
+                <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
+                <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
+                <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
+                <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
             </ul>
-        </nav>
+        </li>
+
+        <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+
+        <li class="lang-switch">
+            <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
+            <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
+        </li>
+    </ul>
+</nav>
     </header>
 
     <main class="container">
@@ -51,6 +59,19 @@
             <input type="text" id="searchBar" placeholder="Pesquisar cerveja por nome..." 
                    style="width: 100%; max-width: 500px; padding: 15px; border-radius: 30px; border: 2px solid var(--gold); background: #222; color: white; outline: none; text-align: center; font-size: 1rem;">
         </section>
+
+        <div class="filters-container" style="text-align: center; margin-top: 20px; display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap;">
+    
+    <select id="styleFilter" style="padding: 12px; border-radius: 5px; background: #222; color: white; border: 1px solid var(--gold); outline: none; cursor: pointer;">
+        <option value="">Todos os Estilos</option>
+        </select>
+    
+    <label style="color: #ccc; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 1rem;">
+        <input type="checkbox" id="glutenFilter" style="width: 18px; height: 18px; accent-color: var(--gold);">
+        Sem Glúten
+    </label>
+
+</div>
 
         <hr class="section-divider">
 

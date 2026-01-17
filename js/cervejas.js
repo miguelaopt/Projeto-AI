@@ -1,17 +1,14 @@
-//Fichairo para listar todas as cervejas na pagina de cervejas
-//Inclui logica de pesquisa e filtragem
-//Inclui logica para mudar o idioma
+// Ficheiro para listar todas as cervejas na pagina de cervejas com Filtros Avançados e Leitura de URL
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Simulação de dados (Extendendo a base de dados para ter 12 itens)
-    //podemos meter mais, 12 deve chegar para mostrar a funcionalidade
+    // Base de dados das cervejas
     const baseBeers = [
-        { id: 1, name: "Heineken Original", style: "Lager ", img: "/img/home/heineken.jpg", price: "2,50€" },
-        { id: 2, name: "Sagres Original", style: "Lager(Pilsner)", img: "/img/home/sagres.png", price: "2,00€" },
-        { id: 3, name: "Super Bock Original", style: "Lager(Pilsner)", img: "/img/home/super.jpg", price: "2,20€" },
-        { id: 4, name: "Erdinger Weissbier", style: "Weissbier(Cerveja de Trigo)", img: "/img/home/erdinger.jpg", price: "3,50€" },
-        { id: 5, name: "Baron Des Cédres IPA", style: "IPA(India Pale Ale)", img: "/img/home/baron.png", price: "3,80€" },
+        { id: 1, name: "Heineken Original", style: "Lager", img: "/img/home/heineken.jpg", price: "2,50€" },
+        { id: 2, name: "Sagres Original", style: "Lager (Pilsner)", img: "/img/home/sagres.png", price: "2,00€" },
+        { id: 3, name: "Super Bock Original", style: "Lager (Pilsner)", img: "/img/home/super.jpg", price: "2,20€" },
+        { id: 4, name: "Erdinger Weissbier", style: "Weissbier (Trigo)", img: "/img/home/erdinger.jpg", price: "3,50€" },
+        { id: 5, name: "Baron Des Cédres IPA", style: "IPA (India Pale Ale)", img: "/img/home/baron.png", price: "3,80€" },
         { id: 6, name: "Corona Extra", style: "Lager", img: "/img/home/corona.png", price: "3,00€" },
         { id: 7, name: "Sagres Preta", style: "Dark Lager", img: "/img/home/preta_web.png", price: "2,20€" },
         { id: 8, name: "Super Bock Abadia", style: "Belgian Abbey Ale", img: "/img/home/abadia.jpg", price: "2,50€" },
@@ -21,35 +18,39 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 12, name: "Praxis", style: "Lager", img: "/img/home/praxishome.jpg", price: "2,20€" }
     ];
 
-    // Gerar 12 cervejas
-    let allBeers = [];
-    while (allBeers.length < 12) {
-        allBeers = allBeers.concat(baseBeers);
-    }
-    allBeers = allBeers.slice(0, 12); // Garante exatamente 12
-    //se for para mudar o n de cervejas, mudar aqui
-
-    // Adiciona IDs únicos virtuais para não dar erro na listagem
-    allBeers = allBeers.map((beer, index) => ({ ...beer, uniqueId: index }));
+    let allBeers = [...baseBeers]; 
 
     const gridContainer = document.getElementById("beer-grid-container");
     const searchBar = document.getElementById("searchBar");
+    const styleFilter = document.getElementById("styleFilter");
+    const glutenFilter = document.getElementById("glutenFilter");
 
-    // Função para renderizar
+    // 1. Povoar o Dropdown de Estilos
+    const uniqueStyles = [...new Set(allBeers.map(b => b.style.split('(')[0].trim()))];
+    
+    uniqueStyles.sort().forEach(style => {
+        const option = document.createElement("option");
+        option.value = style; // O valor deve corresponder ao texto para o filtro funcionar
+        option.innerText = style;
+        styleFilter.appendChild(option);
+    });
+
+    // 2. Função de Renderização
     function renderBeers(list) {
         gridContainer.innerHTML = "";
         
         if(list.length === 0) {
-            gridContainer.innerHTML = "<h3 style='color:#777; width:100%; text-align:center;'>Nenhuma cerveja encontrada.</h3>";
+            gridContainer.innerHTML = `
+                <div style='width:100%; text-align:center; padding: 40px;'>
+                    <h3 style='color:#777;'>Nenhuma cerveja encontrada com esses filtros.</h3>
+                </div>`;
             return;
         }
 
         list.forEach(beer => {
             const card = document.createElement("a");
-            // Mantemos o link para o detalhe original (usando o ID real do produto)
             card.href = `detalhe.html?id=${beer.id}`; 
             card.className = "beer-card-link";
-            // Os cards sao iguais ao do home
             card.innerHTML = `
                 <div class="beer-card">
                     <div class="card-image-container">
@@ -69,16 +70,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Renderizar inicial
-    renderBeers(allBeers);
+    // 3. Função Principal de Filtro
+    function filterBeers() {
+        const searchTerm = searchBar.value.toLowerCase();
+        const selectedStyle = styleFilter.value.toLowerCase();
+        const isGlutenFree = glutenFilter.checked;
 
-    // Funcionalidade de Pesquisa
-    searchBar.addEventListener("keyup", (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = allBeers.filter(beer => 
-            beer.name.toLowerCase().includes(term) || 
-            beer.style.toLowerCase().includes(term)
-        );
+        const filtered = allBeers.filter(beer => {
+            // Filtro de Texto
+            const matchText = beer.name.toLowerCase().includes(searchTerm) || 
+                              beer.style.toLowerCase().includes(searchTerm);
+            
+            // Filtro de Estilo (Dropdown)
+            const matchStyle = selectedStyle === "" || beer.style.toLowerCase().includes(selectedStyle);
+            
+            // Filtro Sem Glúten (Checkbox)
+            let matchGluten = true;
+            if (isGlutenFree) {
+                matchGluten = beer.style.toLowerCase().includes("sem glúten") || 
+                              beer.name.toLowerCase().includes("sem glúten") ||
+                              beer.name.toLowerCase().includes("gluten free");
+            }
+
+            return matchText && matchStyle && matchGluten;
+        });
+
         renderBeers(filtered);
-    });
+    }
+    searchBar.addEventListener("keyup", filterBeers);
+    styleFilter.addEventListener("change", filterBeers);
+    glutenFilter.addEventListener("change", filterBeers);
+
+    //permitir que os submenos funcionamem
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get('cat');
+
+    if (category) {
+        if (category === 'sem-alcool') {
+            searchBar.value = "sem álcool";
+        } else if (category === 'lager') {
+            styleFilter.value = "Lager"; 
+        } else if (category === 'ipa') {
+            styleFilter.value = "IPA";
+        }
+        filterBeers();
+    } else {
+        renderBeers(allBeers);
+    }
 });

@@ -29,14 +29,27 @@
     <div id="date-time-display"></div>
     <!-- Botões de idioma e outras paginas-->
     <nav>
-        <ul>
-            <li><a href="cervejas.html" data-lang="menu_beers">Cervejas</a></li>
-            <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li> <li class="lang-switch">
-                <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
-                <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
-            </li>
-        </ul>
-    </nav>
+    <ul>
+        <li><a href="home.html">Início</a></li>
+        
+        <li>
+            <a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a>
+            <ul class="submenu">
+                <li><a href="cervejas.html" data-lang="submenu_all">Ver Todas</a></li>
+                <li><a href="cervejas.html?cat=lager" data-lang="submenu_lager">Lagers & Pilsners</a></li>
+                <li><a href="cervejas.html?cat=ipa" data-lang="submenu_ipa">IPAs & Ales</a></li>
+                <li><a href="cervejas.html?cat=sem-alcool" data-lang="submenu_no_alcohol">Sem Álcool</a></li>
+            </ul>
+        </li>
+
+        <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+
+        <li class="lang-switch">
+            <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>
+            <button class="lang-btn" data-btn-lang="en" onclick="changeLanguage('en')">🇺🇸</button>
+        </li>
+    </ul>
+</nav>
 </header>
 <!-- Conteúdo principal da página -->
     <main class="container">

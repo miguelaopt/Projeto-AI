@@ -8,6 +8,16 @@ window.translations = {
         // Menu
         menu_beers: "Cervejas",
         menu_contact: "Contacto",
+
+        //Submenu
+        submenu_all: "Ver Todas",
+        submenu_lager: "Lager",
+        submenu_ipa: "IPA & Ales",
+        submenu_no_alcohol: "Sem Álcool",
+
+        //Filtros
+        filter_default_option: "Todos os Estilos",
+        filter_gluten_label: "Sem Glúten",
         
         // Slides
         slide1_title: "Descubra a SuperBock",
@@ -46,6 +56,16 @@ window.translations = {
         // Menu
         menu_beers: "Beers",
         menu_contact: "Contact",
+
+        //Submenu
+        submenu_all: "View All",
+        submenu_lager: "Lager & Pilsner",
+        submenu_ipa: "IPA & Ales",
+        submenu_no_alcohol: "Alcohol Free",
+
+        //Filtros
+        filter_default_option: "All Styles",
+        filter_gluten_label: "Gluten Free",
 
         // Slides
         slide1_title: "Discover SuperBock",
