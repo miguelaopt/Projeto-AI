@@ -1,12 +1,11 @@
+
 /* css para o contacto */
 
-/* Contentor do link de voltar */
 .back-link-container {
     text-align: center; 
     margin-top: 40px;
 }
 
-/* O link em si */
 .back-link {
     color: #888; 
     text-decoration: none; 

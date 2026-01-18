@@ -1,3 +1,6 @@
+
+/* css para os favoritos */
+
 .fav-main {
     margin-top: 140px;
     padding-bottom: 60px;
@@ -10,7 +13,7 @@
     margin-top: 50px;
 }
 
-/* Reutiliza o estilo da grelha, mas pode ter ajustes específicos aqui se quiseres */
+/* Grelha de Favoritos (usa estrutura da home) */
 .fav-grid {
     margin-top: 40px;
 }

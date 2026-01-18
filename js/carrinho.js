@@ -1,28 +1,30 @@
-// js/carrinho.js
+//o script do carrinho de compras
 
+// descontos das cervejas
 const DISCOUNTS = { 'unidade': 0, 'pack6': 0.05, 'pack12': 0.10, 'box24': 0.15 };
 const PACK_NAMES = { 'unidade': 'Unidade', 'pack6': 'Pack 6', 'pack12': 'Pack 12', 'box24': 'Caixa 24' };
 const PACK_QTD = { 'unidade': 1, 'pack6': 6, 'pack12': 12, 'box24': 24 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. AUTO-REPARAÇÃO: Limpa itens estragados do passado
+    // 1. limpar lixo do storage se houver cenas estragadas
     validarELimparCesto();
 
-    // 2. Inicializar componentes
+    // 2. arrancar o contador
     atualizarContadorCesto();
     renderizarPopupCesto();
 
-    // 3. Lógica do Dropdown (Abrir/Fechar)
+    // 3. abrir e fechar o cesto
     const cartBtn = document.getElementById("cart-btn");
     const cartDropdown = document.querySelector(".cart-dropdown");
 
     if (cartBtn && cartDropdown) {
         cartBtn.addEventListener("click", (e) => {
             e.preventDefault(); 
-            renderizarPopupCesto(); // Atualiza sempre que abre
+            renderizarPopupCesto(); // atualiza sempre que abre
             cartDropdown.classList.toggle("show");
         });
         
+        // fecha se clicar fora
         document.addEventListener("click", (e) => {
             if (!cartBtn.contains(e.target) && !cartDropdown.contains(e.target)) {
                 cartDropdown.classList.remove("show");
@@ -30,38 +32,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Se estiver na página de Checkout
+    // se tiver na pagina de checkout desenha a tabela
     if(document.getElementById("checkout-table-body")) {
         renderCheckout();
         configurarFormularioCheckout();
     }
 });
 
-// --- FUNÇÃO DE LIMPEZA AUTOMÁTICA ---
+// limpar erros antigos 
 function validarELimparCesto() {
     try {
         let carrinho = JSON.parse(localStorage.getItem("royal_cart") || "[]");
-        // Filtra apenas itens que tenham ID, Nome e Preço válidos
+        // guarda so o que tiver id e preco
         const carrinhoValido = carrinho.filter(item => item.cartId && item.name && item.unitPrice);
         
-        // Se encontrou lixo, limpa e avisa na consola
         if (carrinho.length !== carrinhoValido.length) {
             console.warn("Cesto corrigido: Itens inválidos foram removidos.");
             localStorage.setItem("royal_cart", JSON.stringify(carrinhoValido));
         }
     } catch (e) {
-        // Se o JSON estiver muito estragado, reseta tudo
+        // se tiver tudo estragado apaga tudo
         localStorage.removeItem("royal_cart");
     }
 }
 
-// --- FUNÇÕES GLOBAIS (window) ---
-// Usamos window.nomeDaFuncao para garantir que o HTML consegue encontrar as funções
+// funcoes globais para o html ver
 
 window.adicionarAoCesto = function(id, nome, img, precoBase, tipoPack) {
     let carrinho = JSON.parse(localStorage.getItem("royal_cart") || "[]");
     
-    // Prevenção de erros nos dados
+    // verifica se veio tudo direito
     if (!id || !nome || !precoBase) {
         alert("Erro: Dados do produto inválidos.");
         return;
@@ -71,7 +71,7 @@ window.adicionarAoCesto = function(id, nome, img, precoBase, tipoPack) {
     const qtdItens = PACK_QTD[tipoPack] || 1;
     const desconto = DISCOUNTS[tipoPack] || 0;
     
-    // Tratamento de preço (troca vírgula por ponto se necessário)
+    // troca virgula por ponto senao o js nao faz contas
     let precoNum = typeof precoBase === 'string' ? parseFloat(precoBase.replace(',', '.').replace('€', '')) : precoBase;
     
     const precoFinal = (precoNum * qtdItens * (1 - desconto)).toFixed(2);
@@ -86,7 +86,7 @@ window.adicionarAoCesto = function(id, nome, img, precoBase, tipoPack) {
             cartId: cartItemId,
             productId: id,
             name: nome,
-            img: img, // Se img for undefined, o HTML mostra ícone de imagem quebrada, mas não trava
+            img: img, // se nao tiver img paciencia
             packType: tipoPack,
             packLabel: label,
             unitPrice: parseFloat(precoFinal),
@@ -100,6 +100,7 @@ window.adicionarAoCesto = function(id, nome, img, precoBase, tipoPack) {
     alert("Adicionado ao cesto!"); 
 };
 
+// para o remover do cesto
 window.removerDoCesto = function(cartItemId) {
     let carrinho = JSON.parse(localStorage.getItem("royal_cart") || "[]");
     const novoCarrinho = carrinho.filter(item => item.cartId !== cartItemId);
@@ -109,18 +110,20 @@ window.removerDoCesto = function(cartItemId) {
     atualizarContadorCesto();
     renderizarPopupCesto();
     
+    // atualiza tambem se tiver na pagina de checkout
     if(document.getElementById("checkout-table-body")) {
         renderCheckout();
     }
 };
 
+// atualiza o numero no icone do cesto
 function atualizarContadorCesto() {
     const carrinho = JSON.parse(localStorage.getItem("royal_cart") || "[]");
     const totalCount = carrinho.reduce((acc, item) => acc + item.qtd, 0);
     const countEl = document.getElementById("cart-count");
     if(countEl) countEl.innerText = totalCount;
 }
-
+// desenha o popup do cesto
 function renderizarPopupCesto() {
     const popup = document.getElementById("cart-items-list");
     const totalEl = document.getElementById("cart-total-value");
@@ -142,7 +145,7 @@ function renderizarPopupCesto() {
             const li = document.createElement("li");
             li.className = "cart-item-row"; 
             
-            // Layout do item
+            // desenhar o item
             li.innerHTML = `
                 <div class="cart-item-info">
                     <img src="${item.img || '/img/icon/cr_icon.png'}" class="cart-item-img" alt="img" onerror="this.src='https://placehold.co/40'">
@@ -161,7 +164,7 @@ function renderizarPopupCesto() {
     }
     totalEl.innerText = total.toFixed(2) + "€";
 }
-
+// desenha a tabela de checkout
 function renderCheckout() {
     const tbody = document.getElementById("checkout-table-body");
     const totalEl = document.getElementById("checkout-total");
@@ -177,6 +180,7 @@ function renderCheckout() {
         return;
     }
 
+    // preenche a tabela
     carrinho.forEach(item => {
         const subtotal = item.unitPrice * item.qtd;
         total += subtotal;
@@ -198,7 +202,7 @@ function renderCheckout() {
     });
     totalEl.innerText = total.toFixed(2) + "€";
 }
-
+// configura o formulario de checkout
 function configurarFormularioCheckout() {
     const form = document.getElementById("checkout-form");
     if(!form) return;
@@ -222,6 +226,7 @@ function configurarFormularioCheckout() {
             return;
         }
 
+        // cria a encomenda
         const totalValue = document.getElementById("checkout-total").innerText;
         const novaEncomenda = {
             id: Date.now(),
@@ -240,6 +245,7 @@ function configurarFormularioCheckout() {
         encomendas.push(novaEncomenda);
         localStorage.setItem("royal_orders", JSON.stringify(encomendas));
 
+        // limpa o cesto e manda o user embora
         localStorage.removeItem("royal_cart");
         alert("Encomenda realizada com sucesso!");
         window.location.href = "encomenda.html";

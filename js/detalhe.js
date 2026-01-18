@@ -1,11 +1,14 @@
+// o script da pagina de detalhe do produto
+// detalhes da cerveja
+
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Verificar Scripts Essenciais
+    // 1. Ver se carregou a base de dados
     if(typeof beerDatabase === 'undefined') {
         console.error("ERRO: O ficheiro js/cervejas.js não foi carregado.");
         return;
     }
 
-    // 2. Identificar a Cerveja
+    // 2. Apanhar o id da url (?id=1)
     const params = new URLSearchParams(window.location.search);
     const beerId = parseInt(params.get("id"));
     const beer = beerDatabase.find(b => b.id === beerId);
@@ -14,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function renderBeerDetail() {
             const lang = localStorage.getItem('royal_lang') || 'pt';
 
-            // Dados Básicos
+            // titulo da pagina
             document.title = `${beer.name} | Royal`;
 
             // Imagem (Usa a detailImg se existir, senão usa a normal)
@@ -24,20 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("detail-name").innerText = beer.name;
             document.getElementById("detail-style").innerText = beer.style;
             
-            // --- CORREÇÃO AQUI: Atualizar o preço de cima ---
+            //Atualizar o preço
             document.getElementById("detail-price").innerText = beer.price;
             
-            // Rating
+            // estrelas
             document.getElementById("detail-rating").innerText = `${beer.rating} ⭐`;
             
-            // Tratamento Preço para cálculos (Converte "2,50€" em 2.50)
+            // converte o "2,50€" para 2.50 para fazer contas
             const basePrice = parseFloat(beer.price.replace(',', '.').replace('€', ''));
             const initialPrice = !isNaN(basePrice) ? basePrice.toFixed(2) : "0.00";
 
-            // Descrição e Texto Rico
+            // Descrição (HTML pq tem bolds)
             document.getElementById("detail-desc").innerHTML = beer.desc[lang] || beer.desc['pt'];
 
-            // Sabores
+            // Sabores (tags bonitas)
             const flavorsContainer = document.getElementById("detail-flavors");
             if(flavorsContainer) {
                 flavorsContainer.innerHTML = ''; 
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // FAQ
+            // Perguntas frequentes
             const faqContainer = document.getElementById("detail-faq");
             if(faqContainer) {
                 faqContainer.innerHTML = ''; 
@@ -75,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // --- PAINEL DE COMPRA ---
+            //PAINEL DE COMPRA (FINALMENTE A FUNCIONAR)
             const infoContainer = document.querySelector(".product-info");
             
             const oldPanel = document.getElementById("buy-panel");
@@ -84,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const buyPanel = document.createElement("div");
             buyPanel.id = "buy-panel";
 
-            // Verificar favorito
+            // ver se é favorito
             let isFav = false;
             if(typeof verificarFavorito === 'function') {
                 isFav = verificarFavorito(beer.id);
@@ -114,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if(faqContainer) infoContainer.insertBefore(buyPanel, faqContainer);
 
-            // Eventos do Painel
+            // Eventos do Painel (mudar preço quando muda pack)
             const select = document.getElementById("pack-select");
             const priceDisplay = document.getElementById("dynamic-price");
 

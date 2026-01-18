@@ -1,9 +1,13 @@
-/* --- VARIÁVEIS CSS (Paleta e Fontes) --- */
-/* Cores e as bases para a pagina inteira */
+
+/* css do home e variaveis para o resto do projeto */
+/* este css é global para o sitee inteiro */
+
+/* VARIÁVEIS CSS (Paleta e Fontes)*/
+/* Definimos as cores aqui para ser fácil trocar o tema se o prof pedir */
 :root {
     --bg-dark: #121212;
     --bg-card: #1E1E1E;
-    --gold: #F2B705;
+    --gold: #F2B705;       /* Cor principal (Amarelo Cerveja) */
     --white: #FFFFFF;
     --green-detail: #2E7D32;
     --copper-detail: #B87333;
@@ -12,16 +16,17 @@
     --font-text: 'Roboto', sans-serif;
 }
 
-/* --- RESET E BASE --- */
+/* RESET E BASE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg-dark);
     color: var(--white);
     font-family: var(--font-text);
-    padding-top: 80px; 
+    padding-top: 80px; /* Espaço para o header fixo não tapar o conteúdo */
 }
 
+/* CABEÇALHO (HEADER)*/
 header {
     position: fixed;
     top: 0;
@@ -38,12 +43,13 @@ header {
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
+/* Menu Dropdown (Submenus) */
 nav ul li {
     position: relative; 
 }
 
 nav ul li ul {
-    display: none;
+    display: none; /* Escondido por defeito */
     position: absolute;
     top: 100%; /* Aparece logo abaixo do menu */
     left: 0;
@@ -57,6 +63,7 @@ nav ul li ul {
     z-index: 1100;
 }
 
+/* Mostra o menu quando se passa o rato */
 nav ul li:hover > ul {
     display: flex;
 }
@@ -82,7 +89,7 @@ nav ul li ul li:last-child a {
 nav ul li ul li a:hover {
     background-color: var(--gold);
     color: var(--bg-dark);
-    padding-left: 25px; 
+    padding-left: 25px; /* Efeito de "empurrão" */
 }
 
 .logo {
@@ -93,7 +100,7 @@ nav ul li ul li a:hover {
     letter-spacing: 1px;
 }
 
-/* Menu de Navegação */
+/* Menu de Navegação Principal */
 nav ul {
     display: flex;
     list-style: none;
@@ -110,7 +117,7 @@ nav a:hover {
     color: var(--gold);
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* CONTEÚDO GERAL (Layout)*/
 .container {
     max-width: 1200px;
     margin: 40px auto;
@@ -126,7 +133,7 @@ nav a:hover {
     padding-left: 15px;
 }
 
-/* --- ESTILOS DO SLIDESHOW --- */
+/*SLIDESHOW */
 .slideshow-container {
     max-width: 1000px;
     position: relative;
@@ -139,7 +146,7 @@ nav a:hover {
 }
 
 .fade-slides {
-    display: none;
+    display: none; /* Controlado pelo JS */
     width: 100%;
     height: 400px;
 }
@@ -174,7 +181,7 @@ nav a:hover {
     color: #ddd;
 }
 
-/* Animação suave do slide */
+/* Animação de fade simples */
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -185,9 +192,10 @@ nav a:hover {
     to {opacity: 1}
 }
 
-/* --- GRID E CARDS DE CERVEJA --- */
+/* CARDS DE CERVEJA (Grid Layout)*/
 .beer-grid {
     display: grid;
+    /* Responsivo: ajusta as colunas automaticamente */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
@@ -203,7 +211,7 @@ nav a:hover {
 }
 
 .beer-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.03); /* Zoom ligeiro */
     box-shadow: 0 10px 20px rgba(242, 183, 5, 0.2);
     border-color: var(--gold);
 }
@@ -212,7 +220,6 @@ nav a:hover {
     height: 250px; 
     width: 100%;
     background-color: #2a2a2a; 
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,7 +278,7 @@ nav a:hover {
     font-size: 1.1rem;
 }
 
-/* Footer Simples */
+/* Footer (Rodapé) */
 footer {
     margin-top: 60px;
     background-color: #0f0f0f;
@@ -281,18 +288,18 @@ footer {
     color: #777;
 }
 
-/* --- DIVISÓRIA --- */
+/* ELEMENTOS DE DESIGN  */
 .section-divider {
     border: 0;
     height: 2px;
-    /* Gradiente que vai de transparente para Dourado e volta para transparente */
+    /* Gradiente transparente -> Dourado -> transparente */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gold), rgba(0, 0, 0, 0));
-    margin: 50px auto; /* Espaçamento em cima e em baixo */
+    margin: 50px auto; 
     width: 80%;
     opacity: 0.7;
 }
 
-/* --- SECÇÃO NOSSA HISTÓRIA --- */
+/* Secção "Quem Somos" */
 .about-section {
     display: flex;
     align-items: center;
@@ -326,7 +333,7 @@ footer {
     object-fit: cover;
 }
 
-/* --- BARRA DE INFORMAÇÕES --- */
+/* Barra de Informações Extras */
 .info-bar {
     display: flex;
     justify-content: space-around;
@@ -350,7 +357,7 @@ footer {
     line-height: 1.6;
 }
 
-/* --- FORMULÁRIO DE CONTACTO (REACT) --- */
+/*FORMULÁRIO DE CONTACTO (Usado no React) */
 .contact-section {
     max-width: 800px;
     margin: 40px auto 80px auto;
@@ -379,7 +386,7 @@ footer {
     gap: 20px;
 }
 
-/* Labels e Inputs */
+/* Estilos de Input e Labels */
 label {
     color: var(--gold);
     margin-bottom: 8px;
@@ -413,7 +420,7 @@ input:focus, select:focus, textarea:focus {
     margin-top: 5px;
 }
 
-/* Botão Enviar */
+/* Botão de Envio */
 .btn-submit {
     background-color: var(--gold);
     color: var(--bg-dark);
@@ -433,7 +440,7 @@ input:focus, select:focus, textarea:focus {
     transform: scale(1.02);
 }
 
-/* Mensagens de Feedback */
+/* Mensagens de Feedback (Sucesso/Erro) */
 .alert {
     padding: 15px;
     margin-bottom: 20px;
@@ -448,21 +455,14 @@ input:focus, select:focus, textarea:focus {
     color: #81c784;
 }
 
-/* Responsividade para telemóveis */
-@media (max-width: 600px) {
-    .form-row {
-        grid-template-columns: 1fr; /* Um campo por linha */
-    }
-}
-
-/* --- REMOVER SUBLINHADO DOS LINKS DOS CARDS --- */
+/* Remover sublinhado dos links nos cards */
 .beer-grid a {
     text-decoration: none; 
     color: inherit;        
     display: block;        
 }
 
-/* --- BOTÕES DE IDIOMA --- */
+/* Botões PT/EN */
 .lang-switch {
     display: flex;
     gap: 10px;
@@ -475,10 +475,10 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid #555;
     cursor: pointer;
     font-size: 1.2rem;
-    padding: 8px 12px; /* Aumentei um pouco o padding */
+    padding: 8px 12px; 
     border-radius: 6px;
     transition: all 0.3s ease;
-    opacity: 1; /* Removi a opacidade de 0.5 para ver melhor */
+    opacity: 1; 
 }
 
 .lang-btn:hover {
@@ -488,29 +488,27 @@ input:focus, select:focus, textarea:focus {
 }
 
 .lang-btn.active {
-    background-color: var(--gold); /* Fundo dourado quando ativo */
-    color: var(--bg-dark); /* Texto escuro para leitura fácil no dourado */
+    background-color: var(--gold);
+    color: var(--bg-dark);
     border-color: var(--gold);
     font-weight: bold;
     transform: scale(1.05);
 }
 
-/* --- ESTILO DATA E HORA --- */
+/* WIDGET DATA E HORA */
 #date-time-display {
-    font-family: 'Roboto', monospace; /* Monospace ajuda a manter os números alinhados */
+    font-family: 'Roboto', monospace;
     font-size: 0.85rem;
     color: #e0e0e0;
-    background-color: rgba(255, 255, 255, 0.08); /* Fundo subtil */
+    background-color: rgba(255, 255, 255, 0.08);
     padding: 8px 16px;
-    border-radius: 50px; /* Arredondado (Cápsula) */
+    border-radius: 50px;
     border: 1px solid #333;
-    
     display: flex;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    
-    margin: 0 20px; /* Espaço entre Logo e Menu */
+    margin: 0 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
 }
@@ -518,11 +516,12 @@ input:focus, select:focus, textarea:focus {
 #date-time-display:hover {
     border-color: var(--gold);
     color: var(--white);
-    box-shadow: 0 0 10px rgba(242, 183, 5, 0.2); /* Brilho dourado ao passar o rato */
+    box-shadow: 0 0 10px rgba(242, 183, 5, 0.2);
 }
 
+/* CARRINHO DE COMPRAS*/
 .cart-badge {
-    background-color: #d32f2f; /* Vermelho escuro */
+    background-color: #d32f2f;
     color: white;
     border-radius: 50%;
     padding: 2px 6px;
@@ -533,7 +532,7 @@ input:focus, select:focus, textarea:focus {
     margin-left: 2px;
 }
 
-/* Dropdown do Carrinho (Escondido por defeito) */
+/* Dropdown do Carrinho */
 .cart-dropdown {
     display: none;
     position: absolute;
@@ -548,22 +547,20 @@ input:focus, select:focus, textarea:focus {
     z-index: 1100;
 }
 
-/* Classe que o JavaScript adiciona para mostrar o carrinho */
 .cart-dropdown.show {
-    display: block;
+    display: block; /* JS ativa esta classe */
 }
 
-/* Lista de itens dentro do cesto */
 .cart-items-list {
     list-style: none;
     max-height: 300px;
-    overflow-y: auto; /* Scroll se tiver muitos itens */
+    overflow-y: auto;
     margin-bottom: 15px;
     border-bottom: 1px solid #333;
     padding: 0;
 }
 
-/* Scrollbar personalizada para o cesto */
+/* Scrollbar personalizada */
 .cart-items-list::-webkit-scrollbar {
     width: 6px;
 }
@@ -572,7 +569,6 @@ input:focus, select:focus, textarea:focus {
     border-radius: 3px;
 }
 
-/* Linha de cada produto no cesto */
 .cart-item-row {
     background: #222;
     margin-bottom: 8px;
@@ -616,7 +612,6 @@ input:focus, select:focus, textarea:focus {
     color: #ff0000;
 }
 
-/* Linha de Total */
 .cart-total-row {
     display: flex;
     justify-content: space-between;
@@ -630,9 +625,10 @@ input:focus, select:focus, textarea:focus {
     color: var(--gold);
 }
 
+/* Botão de Login Estilizado */
 .login-btn-style {
     background-color: var(--gold);
-    color: var(--bg-dark) !important; /* Força a cor escura */
+    color: var(--bg-dark) !important;
     padding: 8px 20px;
     border-radius: 50px;
     font-weight: bold;
@@ -644,13 +640,13 @@ input:focus, select:focus, textarea:focus {
 }
 
 .login-btn-style:hover {
-    background-color: #d4a004; /* Dourado um pouco mais escuro */
-    color: #000 !important;    /* Garante que o texto se mantém preto */
+    background-color: #d4a004;
+    color: #000 !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(242, 183, 5, 0.4);
 }
 
-/* --- ESTILOS PARA DETALHES DA ENCOMENDA (Seta e Dropdown) --- */
+/*HISTÓRICO DE ENCOMENDAS*/
 .order-row {
     background: #222;
     margin-bottom: 10px;
@@ -674,7 +670,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .order-details-box {
-    display: none; /* Escondido por defeito */
+    display: none;
     background: #1a1a1a;
     border-top: 1px solid #444;
     padding: 20px;
@@ -687,7 +683,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .order-header.active .order-arrow {
-    transform: rotate(180deg); /* Roda a seta */
+    transform: rotate(180deg);
 }
 
 @keyframes slideDown {
@@ -695,16 +691,15 @@ input:focus, select:focus, textarea:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Foto de Perfil */
+/* Avatar de Utilizador */
 .user-avatar {
-    width: 40px;  /* Tamanho da foto */
+    width: 40px;
     height: 40px; 
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--bg-dark);
 }
 
-/* Container do menu de utilizador no header */
 .user-menu-trigger {
     display: flex;
     align-items: center;
@@ -712,7 +707,7 @@ input:focus, select:focus, textarea:focus {
     cursor: pointer;
 }
 
-/* --- MODAL DE IDADE --- */
+/* --- MODAL DE VERIFICAÇÃO DE IDADE --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -784,15 +779,15 @@ input:focus, select:focus, textarea:focus {
     color: var(--white);
 }
 
+/* Fix específico para o carrinho não ficar oculto em certas resoluções */
 #cart-items-list {
-    display: block !important;      /* Sobrepõe o display:none dos menus */
-    position: static !important;    /* Remove o posicionamento absoluto */
+    display: block !important;
+    position: static !important;
     background: transparent !important;
     box-shadow: none !important;
     border-top: none !important;
     min-width: 100% !important;
     
-    /* Mantém o estilo original da lista */
     list-style: none;
     max-height: 300px;
     overflow-y: auto;

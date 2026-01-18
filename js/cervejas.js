@@ -1,4 +1,7 @@
-// --- BASE DE DADOS GLOBAL (Acessível em todas as páginas) ---
+// BASE DE DADOS GLOBAL (isto devia ser SQL mas pronto) 
+// se alguem quiser meter mais cervejas é aqui
+// cada cerveja tem id unico (numero inteiro)
+// nome, estilo, preco (string com euro), rating (numero 0-5), imagem (caminho relativo)
 const beerDatabase = [
     {
         id: 1,
@@ -254,20 +257,20 @@ const beerDatabase = [
     }
 ];
 
-// --- LÓGICA DO CATÁLOGO (Apenas corre se existir a grelha) ---
+//CODIGO DO CATALOGO (so corre se tiver na pagina certa)
 document.addEventListener("DOMContentLoaded", () => {
     
-    // VERIFICAÇÃO DE SEGURANÇA: Só corre se estivermos na página de catálogo
+    // verifica se o div existe senao sai
     const gridContainer = document.getElementById("beer-grid-container");
-    if(!gridContainer) return; // Sai da função se não houver grelha (ex: detalhe, favoritos)
+    if(!gridContainer) return; 
 
-    let allBeers = beerDatabase; // Usa a base de dados global
+    let allBeers = beerDatabase; // copia a lista
 
     const searchBar = document.getElementById("searchBar");
     const styleFilter = document.getElementById("styleFilter");
     const glutenFilter = document.getElementById("glutenFilter");
 
-    // 1. Povoar o Dropdown de Estilos
+    // Meter os estilos no dropdown sem repetir
     const uniqueStyles = [...new Set(allBeers.map(b => b.style.split('(')[0].trim()))];
     uniqueStyles.sort().forEach(style => {
         const option = document.createElement("option");
@@ -276,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
         styleFilter.appendChild(option);
     });
 
-    // 2. Obter tradução atual
+    // buscar traducao rapida
     function getTrans(key) {
         const lang = localStorage.getItem('royal_lang') || 'pt';
         return (window.translations && window.translations[lang] && window.translations[lang][key]) 
@@ -284,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
                : "";
     }
 
-    // 3. Função de Renderização
+    // desenhar os cartoes
     function renderBeers(list) {
         gridContainer.innerHTML = "";
         
@@ -296,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
             return;
         }
-
+        // este e o design padrao do cartao
         list.forEach(beer => {
             const card = document.createElement("a");
             card.href = `detalhe.html?id=${beer.id}`; 
@@ -320,7 +323,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Função Principal de Filtro
+    // logica de filtrar
+    // meter aqui a logica de filtrar
     function filterBeers() {
         if(!searchBar) return;
         const searchTerm = searchBar.value.toLowerCase();
@@ -343,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderBeers(filtered);
     }
 
-    // 5. Atualizar textos dinâmicos
+    //mudar o texto do placeholder se mudar lingua
     function updateDynamicTexts() {
         const placeholderText = getTrans('search_placeholder');
         if(placeholderText && searchBar) searchBar.placeholder = placeholderText;
@@ -356,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener('languageChange', updateDynamicTexts);
 
-    // Inicialização
+    // Ver se veio parametro da url (tipo ?cat=ipa)
     const params = new URLSearchParams(window.location.search);
     const category = params.get('cat');
 
@@ -378,20 +382,21 @@ function verificarFavorito(id) {
     return favs.includes(id);
 }
 
+// coracao do fav
 function toggleFavorito(id) {
     let favs = JSON.parse(localStorage.getItem("royal_favs") || "[]");
     
     if (favs.includes(id)) {
-        // Remover se já existir
+        // remove se ja tiver la
         favs = favs.filter(fId => fId !== id);
     } else {
-        // Adicionar se não existir
+        // poe se nao tiver
         favs.push(id);
     }
     
     localStorage.setItem("royal_favs", JSON.stringify(favs));
     
-    // Atualiza o ícone do botão se estivermos na página de detalhe
+    // mudar o icone logo
     const btn = document.getElementById("fav-btn");
     if(btn) {
         btn.innerText = favs.includes(id) ? "❤️" : "🤍";

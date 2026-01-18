@@ -1,3 +1,6 @@
+
+/*css para o checkout*/
+
 .checkout-main {
     margin-top: 140px; 
     display: flex; 
@@ -6,11 +9,13 @@
     padding-bottom: 60px;
 }
 
+/* Resumo da Encomenda */
 .checkout-summary {
     flex: 1.5;
     min-width: 300px;
 }
 
+/* Tabela de Produtos */
 .checkout-table {
     width: 100%; 
     border-collapse: collapse; 
@@ -36,6 +41,7 @@
     gap: 15px;
 }
 
+/* Área de Totais */
 .checkout-total-container {
     text-align: right; 
     margin-top: 30px; 
@@ -52,7 +58,6 @@
     min-width: 300px;
 }
 
-/* Ajuste para mobile */
 @media (max-width: 768px) {
     .checkout-main {
         flex-direction: column;

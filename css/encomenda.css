@@ -1,3 +1,6 @@
+
+/* css para historico de encomenda*/
+
 .orders-main {
     margin-top: 140px;
     padding-bottom: 60px;
@@ -15,7 +18,7 @@
     margin-top: 50px;
 }
 
-/* Estilos do Acordeão (Cartão da Encomenda) */
+/*Cartão da Encomenda */
 .order-row {
     background: #222;
     margin-bottom: 15px;
@@ -69,6 +72,7 @@
     color: var(--gold);
 }
 
+/* Roda a seta quando o menu abre */
 .order-header.active .order-arrow {
     transform: rotate(180deg);
 }

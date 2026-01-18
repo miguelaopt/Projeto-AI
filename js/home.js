@@ -1,42 +1,39 @@
-//funcionalidade de slides ( moodle )
+//funcionalidade de slides (copiado do moodle mas adaptado)
 
-// Inicia e atualiza
+// relogio sempre atualizado 
 document.addEventListener("DOMContentLoaded", updateDateTime);
 setInterval(updateDateTime, 1000);
-// Atualiza a cada segundo
-setInterval(updateDateTime, 1000);
-document.addEventListener("DOMContentLoaded", updateDateTime);
 
 document.addEventListener("DOMContentLoaded", function() {
     
     let slideIndex = 0;
     const slides = document.getElementsByClassName("fade-slides");
 
-    // Função principal do slide
+    // Funcao principal do slide
     function showSlides() {
-        // Se não encontrar slides, para a execução para não dar erro
+        // se nao houver slides sai
         if (slides.length === 0) return;
 
-        // Esconde todos os slides
+        // esconde tudo
         for (let i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";  
         }
 
-        // Avança o índice
+        // proximo
         slideIndex++;
 
-        // Se passar do último, volta para o primeiro
+        // volta ao inicio se passar do fim
         if (slideIndex > slides.length) {
             slideIndex = 1;
         }    
 
-        // Mostra o slide atual
+        // mostra o atual
         slides[slideIndex - 1].style.display = "block";  
         
-        // Chama a função novamente em 4 segundos
+        // roda a cada 4 segundos
         setTimeout(showSlides, 4000); 
     }
 
-    // Inicia o slideshow
+    //arranca a festa
     showSlides();
 });

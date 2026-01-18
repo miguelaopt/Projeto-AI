@@ -38,39 +38,43 @@
 
     <main class="container login-container">
         <div id="login-box" class="contact-section">
-            <h2 class="section-title">Login</h2>
+            <h2 class="section-title" data-lang="login_title">Login</h2>
             <form id="login-form" class="contact-form">
-                <input type="email" id="login-email" placeholder="Email" required>
-                <input type="password" id="login-pass" placeholder="Password" required>
-                <button type="submit" class="btn-submit">Entrar</button>
+                <input type="email" id="login-email" placeholder="Email" data-lang="login_email_ph" required>
+                <input type="password" id="login-pass" placeholder="Password" data-lang="login_pass_ph" required>
+                <button type="submit" class="btn-submit" data-lang="login_submit_btn">Entrar</button>
             </form>
             <p class="login-toggle-msg">
-                Ainda não tem conta? <a href="#" onclick="toggleForms()" class="login-toggle-link">Registe-se</a>
+                <span data-lang="login_no_account">Ainda não tem conta?</span> 
+                <a href="#" onclick="toggleForms()" class="login-toggle-link" data-lang="login_link_register">Registe-se</a>
             </p>
         </div>
 
         <div id="register-box" class="contact-section hidden">
-            <h2 class="section-title">Registo</h2>
+            <h2 class="section-title" data-lang="register_title">Registo</h2>
             <form id="register-form" class="contact-form">
-                <input type="text" id="reg-name" placeholder="Nome Completo" required>
-                <input type="email" id="reg-email" placeholder="Email" required>
-                <input type="password" id="reg-pass" placeholder="Password" required>
-                <button type="submit" class="btn-submit">Criar Conta</button>
+                <input type="text" id="reg-name" placeholder="Nome Completo" data-lang="register_name_ph" required>
+                <input type="email" id="reg-email" placeholder="Email" data-lang="login_email_ph" required>
+                <input type="password" id="reg-pass" placeholder="Password" data-lang="login_pass_ph" required>
+                <button type="submit" class="btn-submit" data-lang="register_submit_btn">Criar Conta</button>
             </form>
             <p class="login-toggle-msg">
-                Já tem conta? <a href="#" onclick="toggleForms()" class="login-toggle-link">Faça Login</a>
+                <span data-lang="register_has_account">Já tem conta?</span> 
+                <a href="#" onclick="toggleForms()" class="login-toggle-link" data-lang="register_link_login">Faça Login</a>
             </p>
         </div>
     </main>
 
     <script>
+        // alterna entre os formularios de login e registo
+
         function toggleForms() {
             const loginBox = document.getElementById("login-box");
             const regBox = document.getElementById("register-box");
             loginBox.classList.toggle("hidden");
             regBox.classList.toggle("hidden");
         }
-
+        //para o registo
         document.getElementById("register-form").onsubmit = (e) => {
             e.preventDefault();
             const res = registarUsuario(
@@ -81,7 +85,7 @@
             alert(res.msg);
             if(res.success) toggleForms(); 
         };
-
+        //para o login
         document.getElementById("login-form").onsubmit = (e) => {
             e.preventDefault();
             const res = loginUsuario(
@@ -97,7 +101,7 @@
         
         const lang = localStorage.getItem('royal_lang') || 'pt';
         changeLanguage(lang);
-
+        // relogio sempre atualizado
         function updateDateTime() {
             const display = document.getElementById('date-time-display');
             if (display) {
