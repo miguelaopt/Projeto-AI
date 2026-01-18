@@ -783,3 +783,20 @@ input:focus, select:focus, textarea:focus {
     border-color: var(--gold);
     color: var(--white);
 }
+
+#cart-items-list {
+    display: block !important;      /* Sobrepõe o display:none dos menus */
+    position: static !important;    /* Remove o posicionamento absoluto */
+    background: transparent !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    min-width: 100% !important;
+    
+    /* Mantém o estilo original da lista */
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding: 0;
+}

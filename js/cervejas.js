@@ -49,7 +49,7 @@ const beerDatabase = [
         price: "2,20€",
         rating: 4.9,
         img: "/img/home/super.jpg",
-        detailImg : "/img/super_bock.png",
+        detailImg : "/img/superbock.png",
         desc: {
             pt: `<strong>Origem:</strong> Portugal <br><strong>Conteúdo alcoólico:</strong> 5,2% vol <br><strong>Temperatura ideal:</strong> 5-7 °C <br><br>Vencedora de dezenas de medalhas de ouro, é conhecida pelo seu sabor autêntico e excelência.`,
             en: `<strong>Origin:</strong> Portugal <br><strong>Alcohol content:</strong> 5.2% vol <br><strong>Ideal temperature:</strong> 5-7 °C <br><br>Winner of dozens of gold medals, it is known for its authentic flavor and excellence.`
@@ -372,3 +372,28 @@ document.addEventListener("DOMContentLoaded", () => {
     
     updateDynamicTexts();
 });
+
+function verificarFavorito(id) {
+    const favs = JSON.parse(localStorage.getItem("royal_favs") || "[]");
+    return favs.includes(id);
+}
+
+function toggleFavorito(id) {
+    let favs = JSON.parse(localStorage.getItem("royal_favs") || "[]");
+    
+    if (favs.includes(id)) {
+        // Remover se já existir
+        favs = favs.filter(fId => fId !== id);
+    } else {
+        // Adicionar se não existir
+        favs.push(id);
+    }
+    
+    localStorage.setItem("royal_favs", JSON.stringify(favs));
+    
+    // Atualiza o ícone do botão se estivermos na página de detalhe
+    const btn = document.getElementById("fav-btn");
+    if(btn) {
+        btn.innerText = favs.includes(id) ? "❤️" : "🤍";
+    }
+}
