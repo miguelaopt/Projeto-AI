@@ -1,13 +1,20 @@
-/* Remove a decoração dos links na grid da home */
+/* =========================================
+   ESTILOS GERAIS DE DETALHE
+   ========================================= */
+
+/* Remove a decoração dos links na grid da home (caso seja usado aqui) */
 .beer-card-link {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-/* Layout da Página de Detalhe */
+/* Layout Principal */
 .detail-container {
-    margin-top: 120px; /* Mais espaço por causa do header */
+    margin-top: 120px;
+    max-width: 1100px; /* Limita a largura para não ficar muito esticado */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .product-wrapper {
@@ -18,89 +25,104 @@
     border-radius: 12px;
     border: 1px solid #333;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    align-items: flex-start; /* Alinha os itens no topo */
 }
 
+/* --- IMAGEM DO PRODUTO --- */
 .product-image {
     flex: 1;
     min-width: 300px;
-    background: #fff;
-    padding: 20px; /* Padding ligeiramente reduzido */
+    background: #fff; /* Fundo branco para realçar a garrafa */
+    padding: 30px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    
-    /* MUDANÇA IMPORTANTE: Definir uma altura fixa em vez de max-height */
-    height: 500px; 
+    height: 600px; /* Altura fixa para alinhar bem */
+    position: sticky; /* Mantém a imagem visível ao fazer scroll na info */
+    top: 100px;
 }
 
-/* A imagem dentro do contentor */
 .product-image img {
-    /* width: 100%; height: auto; max-height: 500px;  <- REMOVER ISTO */
-    
-    /* NOVA ABORDAGEM: */
     width: 100%;
-    height: 100%; /* Força a imagem a tentar ocupar todo o espaço disponível do pai */
-    object-fit: contain; /* Garante que ela cabe inteira sem distorcer ou cortar */
-    
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
 }
 
-/* Informações */
+.product-image img:hover {
+    transform: scale(1.05);
+}
+
+/* --- INFORMAÇÕES DO PRODUTO --- */
 .product-info {
     flex: 1.2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
+/* Tags (Estilo, etc) */
 .tag-style {
     background-color: var(--gold);
     color: var(--bg-dark);
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.8rem;
     width: fit-content;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
+/* Título */
 .product-info h1 {
     font-family: var(--font-title);
     font-size: 3rem;
     color: var(--white);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    line-height: 1.1;
 }
 
+/* Meta Info (Preço base e Rating) */
 .detail-meta {
     display: flex;
     gap: 20px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     align-items: center;
+    margin-bottom: 20px;
+    opacity: 0.8; /* Um pouco mais discreto, pois o preço final está em baixo */
 }
 
 .detail-price {
     color: var(--green-detail);
-    font-weight: 700;
+    /* text-decoration: line-through; */ /* Comentei para se quiser meter de novo meto */
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .detail-rating {
     color: var(--gold);
+    font-weight: bold;
 }
 
+/* Descrição e Títulos */
 .product-info h3 {
     font-family: var(--font-title);
     color: var(--gold);
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
 }
 
 .product-info p {
     color: #ccc;
-    line-height: 1.6;
-    font-size: 1.1rem;
+    line-height: 1.7;
+    font-size: 1.05rem;
 }
 
 /* Tags de Sabores */
@@ -108,13 +130,15 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .flavor-tag {
+    background-color: #252525;
     border: 1px solid #444;
     color: #bbb;
-    padding: 8px 15px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 0.9rem;
     transition: all 0.3s;
 }
@@ -122,70 +146,158 @@
 .flavor-tag:hover {
     border-color: var(--gold);
     color: var(--gold);
+    transform: translateY(-2px);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .product-wrapper {
-        flex-direction: column;
-    }
-    .product-image img {
-        max-height: 300px;
-    }
+/* =========================================
+   NOVO: ESTILOS DO PAINEL DE COMPRA (JS)
+   ========================================= */
+
+/* Contentor do Painel (O JS cria este div com id="buy-panel") */
+#buy-panel {
+    margin-top: 35px;
+    padding: 25px;
+    background-color: #0e0e0e !important; /* Força o fundo escuro */
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(242, 183, 5, 0.1); /* Brilho dourado subtil */
 }
 
-/* --- SECÇÃO DE FAQ / ALERGÉNIOS --- */
+/* Preço Dinâmico (Grande e Verde) */
+#dynamic-price {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+    color: var(--green-detail) !important;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Botão de Favorito (Coração) */
+#fav-btn {
+    font-size: 2rem !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 0;
+}
+
+#fav-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Label do Select */
+#buy-panel label {
+    font-size: 0.9rem;
+    color: #aaa !important;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Dropdown (Select) */
+#pack-select {
+    width: 100%;
+    padding: 14px;
+    background-color: #1a1a1a !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none; /* Remove seta padrão feia do browser */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23F2B705%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+}
+
+#pack-select:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 8px rgba(242, 183, 5, 0.3);
+}
+
+/* Botão Adicionar ao Cesto */
+#add-cart-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--gold) !important;
+    color: var(--bg-dark) !important;
+    border: none !important;
+    border-radius: 8px; /* Mais arredondado */
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 #b38600; /* Efeito 3D no botão */
+    margin-top: 10px;
+}
+
+#add-cart-btn:hover {
+    background-color: #ffc800 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b38600;
+}
+
+#add-cart-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 #b38600;
+}
+
+/* --- SECÇÃO DE FAQ --- */
 .faq-container {
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100%;
 }
 
 .faq-item {
-    background-color: #222; /* Fundo ligeiramente diferente */
-    border-left: 3px solid var(--gold); /* Linha dourada à esquerda */
+    background-color: #222;
+    border-left: 3px solid #444; /* Mais discreto inicialmente */
     padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 0 8px 8px 0;
+    margin-bottom: 10px;
+    border-radius: 0 6px 6px 0;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.faq-item:hover {
+    border-left-color: var(--gold);
+    background-color: #2a2a2a;
 }
 
 .faq-question {
     display: block;
     color: var(--gold);
-    font-family: var(--font-title);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 .faq-answer {
-    display: block;
-    color: #ddd;
-    font-size: 1rem;
-    line-height: 1.4;
+    color: #ccc;
+    font-size: 0.95rem;
 }
 
-/* --- ESTILO DATA E HORA --- */
-#date-time-display {
-    font-family: 'Roboto', monospace; /* Monospace ajuda a manter os números alinhados */
-    font-size: 0.85rem;
-    color: #e0e0e0;
-    background-color: rgba(255, 255, 255, 0.08); /* Fundo subtil */
-    padding: 8px 16px;
-    border-radius: 50px; /* Arredondado (Cápsula) */
-    border: 1px solid #333;
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+    .product-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
     
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    
-    margin: 0 20px; /* Espaço entre Logo e Menu */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
+    .product-image {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        position: static; /* Remove sticky em mobile */
+    }
 
-#date-time-display:hover {
-    border-color: var(--gold);
-    color: var(--white);
-    box-shadow: 0 0 10px rgba(242, 183, 5, 0.2); /* Brilho dourado ao passar o rato */
+    .product-info {
+        width: 100%;
+    }
 }

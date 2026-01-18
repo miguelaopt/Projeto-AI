@@ -1,159 +1,138 @@
-//Ficheiro serve para guardar as traduções do site
-//Resto das traducoes estão dentro nos ficheiros js/html
-
-//Colocar window translation para ser visivel para o contact e assim podemos mudar o idioma
-
-window.translations = {
+const translations = {
     pt: {
         // Menu
-        menu_beers: "Cervejas",
-        menu_contact: "Contacto",
-
-        //Submenu
+        menu_beers: "Cervejas ▾",
         submenu_all: "Ver Todas",
-        submenu_lager: "Lager",
-        submenu_ipa: "IPA & Ales",
+        submenu_lager: "Lagers & Pilsners",
+        submenu_ipa: "IPAs & Ales",
         submenu_no_alcohol: "Sem Álcool",
+        menu_contact: "Contacto",
+        
+        // Auth & User
+        login_btn: "Login / Registar",
+        welcome_user: "Olá",
+        menu_my_orders: "📦 Minhas Encomendas",
+        menu_my_favs: "❤️ Meus Favoritos",
+        menu_logout: "🚪 Sair",
 
-        //Filtros
-        filter_default_option: "Todos os Estilos",
-        filter_gluten_label: "Sem Glúten",
+        // Checkout & Carrinho
+        cart_title: "O teu Cesto",
+        cart_empty: "O cesto está vazio.",
+        cart_total: "Total:",
+        checkout_btn: "Finalizar Compra",
+        checkout_title: "Finalizar Encomenda",
+        order_summary: "Resumo do Pedido",
+        shipping_data: "Dados de Envio",
+        address_label: "Morada Completa",
+        postal_label: "Código Postal",
+        card_label: "Cartão (Simulado)",
+        pay_btn: "Pagar e Encomendar",
+        
+        // Encomendas
+        orders_title: "Minhas Encomendas",
+        order_id: "Encomenda",
+        order_date: "Data",
+        order_items: "Itens",
+        view_details: "Ver Detalhes",
+        no_orders: "Ainda não fez nenhuma encomenda.",
+        
+        // Favoritos
+        favs_title: "Meus Favoritos ❤️",
+        no_favs: "Ainda não tem favoritos.",
 
-        //Pagina da cerveja
+        // Catálogo (Existente)
         catalog_title: "O Nosso Catálogo",
-        catalog_intro: "Explore a nossa seleção premium. Desde as Lagers clássicas às IPAs artesanais, temos o sabor perfeito para cada momento. Utilize a pesquisa abaixo para encontrar a sua favorita.",
+        catalog_intro: "Explore a nossa seleção premium. Desde as Lagers clássicas às IPAs artesanais...",
         search_placeholder: "Pesquisar cerveja por nome...",
         filter_all_styles: "Todos os Estilos",
-        no_beers_found: "Nenhuma cerveja encontrada com esses filtros.",
-        
-        // Slides
-        slide1_title: "Descubra a SuperBock",
-        slide1_desc: "Melhor cerveja de Portugal votada por especialistas",
-        slide2_title: "Refresque-se com uma Sagres",
-        slide2_desc: "Disponível também sem álcool para todos",
-        slide3_title: "Os originais: Heineken Original",
-        slide3_desc: "Brinde com amigos e celebre com a cerveja mais conhecida do mundo",
-
-        // Secções
-        section_highlights: "Destaques da Semana",
-        section_about_title: "A Nossa Tradição",
-        section_about_text1: "Desde 1998, a Cervejaria Royal dedica-se à apresentação de cervejas de excelência. Pode encontrar uma vasta seleção de cervejas nacionais e internacionais, cuidadosamente selecionadas para os verdadeiros apreciadores.",
-        section_about_text2: "O nosso serviço é dedicado a proporcionar momentos inesquecíveis, seja para uma reunião casual com amigos ou uma celebração especial.",
-        btn_factory: "Conheça a Fábrica",
-
-        // Info Bar
-        info_where_title: "📍 Onde Estamos",
-        info_social_title: "📱 Redes Sociais",
-        
-        // Footer
-        footer_copy: "2026 Cervejaria Royal. Tradição e Qualidade.",
-
-        // Campos do Formulário React
-        // os campos ja tao atualizados, mandar para la
-        form_title: "Fale Connosco",
-        form_name: "Nome Completo:",
-        form_motive: "Motivo:",
-        form_email: "Email:",      
-        form_phone: "Telefone:",   
-        form_msg: "A sua Mensagem:",
-        form_btn: "Enviar Mensagem",
-
-        //Pagina contacto
-        back_to_menu: "← Voltar ao Menu Principal"
+        filter_gluten_label: "Sem Glúten",
+        no_beers_found: "Nenhuma cerveja encontrada.",
+        footer_copy: "2026 Cervejaria Royal. Tradição e Qualidade."
     },
-    //Em ingles
     en: {
         // Menu
-        menu_beers: "Beers",
+        menu_beers: "Beers ▾",
+        submenu_all: "View All",
+        submenu_lager: "Lagers & Pilsners",
+        submenu_ipa: "IPAs & Ales",
+        submenu_no_alcohol: "Non-Alcoholic",
         menu_contact: "Contact",
 
-        //Submenu
-        submenu_all: "View All",
-        submenu_lager: "Lager & Pilsner",
-        submenu_ipa: "IPA & Ales",
-        submenu_no_alcohol: "Alcohol Free",
+        // Auth & User
+        login_btn: "Login / Register",
+        welcome_user: "Hi",
+        menu_my_orders: "📦 My Orders",
+        menu_my_favs: "❤️ My Favorites",
+        menu_logout: "🚪 Logout",
 
-        //Filtros
-        filter_default_option: "All Styles",
-        filter_gluten_label: "Gluten Free",
+        // Checkout & Cart
+        cart_title: "Your Cart",
+        cart_empty: "Cart is empty.",
+        cart_total: "Total:",
+        checkout_btn: "Checkout",
+        checkout_title: "Complete Order",
+        order_summary: "Order Summary",
+        shipping_data: "Shipping Info",
+        address_label: "Full Address",
+        postal_label: "Postal Code",
+        card_label: "Card Number (Mock)",
+        pay_btn: "Pay and Order",
 
-        //Pagina da cerveja
+        // Orders
+        orders_title: "My Orders",
+        order_id: "Order",
+        order_date: "Date",
+        order_items: "Items",
+        view_details: "View Details",
+        no_orders: "You haven't placed any orders yet.",
+
+        // Favorites
+        favs_title: "My Favorites ❤️",
+        no_favs: "No favorites yet.",
+
+        // Catalog
         catalog_title: "Our Catalog",
-        catalog_intro: "Explore our premium selection. From classic Lagers to craft IPAs, we have the perfect flavor for every moment. Use the search bar below to find your favorite.",
+        catalog_intro: "Explore our premium selection. From classic Lagers to craft IPAs...",
         search_placeholder: "Search beer by name...",
         filter_all_styles: "All Styles",
-        no_beers_found: "No beers found with these filters.",
-
-        // Slides
-        slide1_title: "Discover SuperBock",
-        slide1_desc: "Portugal's best beer voted by experts",
-        slide2_title: "Refresh yourself with a Sagres",
-        slide2_desc: "Also available alcohol-free for everyone",
-        slide3_title: "The Originals: Heineken Original",
-        slide3_desc: "Toast with friends and celebrate with the world's most famous beer",
-
-        // Secções
-        section_highlights: "Highlights of the Week",
-        section_about_title: "Our Tradition",
-        section_about_text1: "Since 1998, Royal Brewery has been dedicated to presenting excellent beers. You can find a vast selection of national and international beers, carefully selected for true connoisseurs.",
-        section_about_text2: "Our service is dedicated to providing unforgettable moments, whether for a casual gathering with friends or a special celebration.",
-        btn_factory: "Visit the Factory",
-
-        // Info Bar
-        info_where_title: "📍 Where We Are",
-        info_social_title: "📱 Follow Us",
-
-        // Footer
-        footer_copy: "2026 Royal Brewery. Tradition and Quality.",
-
-        // Campos do Formulário React
-        // os campos ja tao atualizados, mandar para la
-        form_title: "Contact Us",
-        form_name: "Full Name:",
-        form_motive: "Reason:",
-        form_email: "Email:",    
-        form_phone: "Phone:",    
-        form_msg: "Your Message:",
-        form_btn: "Send Message",
-
-        //Pagina contacto
-        back_to_menu: "← Back to Main Menu"
+        filter_gluten_label: "Gluten Free",
+        no_beers_found: "No beers found.",
+        footer_copy: "2026 Royal Brewery. Tradition and Quality."
     }
 };
 
-// funçao base para mudar o idioma
-// dps ver isto (ta feito)
-
+// Função Global de Mudança de Idioma
 function changeLanguage(lang) {
-    // Guardar a preferência
     localStorage.setItem('royal_lang', lang);
 
-    //para todos os elementos com data-lang, ativa a tradução correta
-    const elements = document.querySelectorAll('[data-lang]');
-    
-    elements.forEach(el => {
+    // 1. Atualizar textos com data-lang
+    document.querySelectorAll('[data-lang]').forEach(el => {
         const key = el.getAttribute('data-lang');
-        if (window.translations[lang][key]) {
-            if(window.translations[lang][key].includes("<")) {
-                el.innerHTML = window.translations[lang][key];
-            } else {
-                el.innerText = window.translations[lang][key];
-            }
+        if (translations[lang][key]) {
+            el.innerText = translations[lang][key];
         }
     });
 
-    // Atualiza os botoes visulamente
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if(btn.dataset.btnLang === lang) btn.classList.add('active');
-    });
+    // 2. Atualizar Placeholders
+    const searchInput = document.getElementById('searchBar');
+    if (searchInput) searchInput.placeholder = translations[lang]['search_placeholder'];
 
-    //Segue para o react
+    const addressInput = document.getElementById('checkout-address');
+    if (addressInput) addressInput.placeholder = translations[lang]['address_label'];
+    
+    const postalInput = document.getElementById('checkout-postal');
+    if (postalInput) postalInput.placeholder = translations[lang]['postal_label'];
+
+    const cardInput = document.getElementById('checkout-card');
+    if (cardInput) cardInput.placeholder = translations[lang]['card_label'];
+
+    // 3. Atualizar Botão de Login (Dinâmico)
+    // Dispara evento para o auth.js apanhar
     window.dispatchEvent(new Event('languageChange'));
 }
 
-// Carregar idioma ao iniciar a página
+// Aplicar ao carregar
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('royal_lang') || 'pt';
-    changeLanguage(savedLang);
+    const lang = localStorage.getItem('royal_lang') || 'pt';
+    changeLanguage(lang);
 });

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Royal</title>
+    
+    <link rel="icon" type="image/png" href="/icon/cr_icon.png">
+    
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+    <link rel="stylesheet" href="/css/login.css">
+    
+    <script src="/js/translation.js"></script>
+    <script src="/js/datahora.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/carrinho.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html" style="text-decoration:none; color:#F2B705;">
+                CERVEJARIA <span style="color:white;">ROYAL</span>
+            </a>
+        </div>
+        
+        <div id="date-time-display"></div>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li class="lang-switch">
+                    <button class="lang-btn" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container login-container">
+        <div id="login-box" class="contact-section">
+            <h2 class="section-title">Login</h2>
+            <form id="login-form" class="contact-form">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-pass" placeholder="Password" required>
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+            <p class="login-toggle-msg">
+                Ainda não tem conta? <a href="#" onclick="toggleForms()" class="login-toggle-link">Registe-se</a>
+            </p>
+        </div>
+
+        <div id="register-box" class="contact-section hidden">
+            <h2 class="section-title">Registo</h2>
+            <form id="register-form" class="contact-form">
+                <input type="text" id="reg-name" placeholder="Nome Completo" required>
+                <input type="email" id="reg-email" placeholder="Email" required>
+                <input type="password" id="reg-pass" placeholder="Password" required>
+                <button type="submit" class="btn-submit">Criar Conta</button>
+            </form>
+            <p class="login-toggle-msg">
+                Já tem conta? <a href="#" onclick="toggleForms()" class="login-toggle-link">Faça Login</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        function toggleForms() {
+            const loginBox = document.getElementById("login-box");
+            const regBox = document.getElementById("register-box");
+            loginBox.classList.toggle("hidden");
+            regBox.classList.toggle("hidden");
+        }
+
+        document.getElementById("register-form").onsubmit = (e) => {
+            e.preventDefault();
+            const res = registarUsuario(
+                document.getElementById("reg-name").value,
+                document.getElementById("reg-email").value,
+                document.getElementById("reg-pass").value
+            );
+            alert(res.msg);
+            if(res.success) toggleForms(); 
+        };
+
+        document.getElementById("login-form").onsubmit = (e) => {
+            e.preventDefault();
+            const res = loginUsuario(
+                document.getElementById("login-email").value,
+                document.getElementById("login-pass").value
+            );
+            if(res.success) {
+                window.location.href = "home.html";
+            } else {
+                alert(res.msg);
+            }
+        };
+        
+        const lang = localStorage.getItem('royal_lang') || 'pt';
+        changeLanguage(lang);
+
+        function updateDateTime() {
+            const display = document.getElementById('date-time-display');
+            if (display) {
+                const now = new Date();
+                const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateStr = now.toLocaleDateString('pt-PT', dateOptions);
+                const timeStr = now.toLocaleTimeString('pt-PT', timeOptions);
+                display.innerHTML = ` ${dateStr} &nbsp;|&nbsp;  ${timeStr}`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateDateTime);
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+</body>
+</html>

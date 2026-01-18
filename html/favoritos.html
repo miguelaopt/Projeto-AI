@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Favoritos | Royal</title>
+    
+    <link rel="icon" type="image/png" href="/icon/cr_icon.png"> <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/favoritos.css">
+    
+    <script src="/js/translation.js"></script>
+    <script src="/js/datahora.js"></script> <script src="/js/auth.js"></script>
+    <script src="/js/carrinho.js"></script>
+    <script src="/js/cervejas.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html" style="text-decoration:none; color:#F2B705;">
+                CERVEJARIA <span style="color:white;">ROYAL</span>
+            </a>
+        </div>
+        
+        <div id="date-time-display"></div>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a></li>
+                
+                <li class="cart-container">
+                    <a href="#" id="cart-btn">🛒 <span id="cart-count" class="cart-badge">0</span></a>
+                    <div class="cart-dropdown">
+                        <h4 style="color:var(--gold); margin-bottom:10px;" data-lang="cart_title">O teu Cesto</h4>
+                        <ul id="cart-items-list" class="cart-items-list"></ul>
+                        <div class="cart-total-row"><span data-lang="cart_total">Total:</span> <span id="cart-total-value">0€</span></div>
+                        <a href="checkout.html" class="btn-submit" style="display:block; text-align:center; margin-top:10px;" data-lang="checkout_btn">Finalizar</a>
+                    </div>
+                </li>
+
+                <li class="lang-switch">
+                    <button class="lang-btn" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container fav-main">
+        <h1 class="section-title" data-lang="favs_title">Meus Favoritos ❤️</h1>
+        <div id="fav-grid" class="beer-grid fav-grid"></div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const favIds = JSON.parse(localStorage.getItem("royal_favs") || "[]");
+            const container = document.getElementById("fav-grid");
+            const lang = localStorage.getItem('royal_lang') || 'pt';
+            
+            const favBeers = beerDatabase.filter(beer => favIds.includes(beer.id));
+
+            if (favBeers.length === 0) {
+                container.innerHTML = `<p class="fav-empty-msg" data-lang="no_favs">Ainda não tem favoritos.</p>`;
+                changeLanguage(lang);
+                return;
+            }
+
+            favBeers.forEach(beer => {
+                const card = document.createElement("a");
+                card.href = `detalhe.html?id=${beer.id}`;
+                card.className = "beer-card-link";
+                card.innerHTML = `
+                    <div class="beer-card">
+                        <div class="card-image-container">
+                            <img src="${beer.img}" alt="${beer.name}">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="beer-name">${beer.name}</h3>
+                            <p class="beer-style">${beer.style}</p>
+                            <div class="card-footer">
+                                <span class="rating">${beer.rating} ⭐</span>
+                                <span class="price">${beer.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            changeLanguage(lang);
+        });
+
+        function updateDateTime() {
+            const display = document.getElementById('date-time-display');
+            if (display) {
+                const now = new Date();
+                const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateStr = now.toLocaleDateString('pt-PT', dateOptions);
+                const timeStr = now.toLocaleTimeString('pt-PT', timeOptions);
+                display.innerHTML = ` ${dateStr} &nbsp;|&nbsp;  ${timeStr}`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateDateTime);
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+</body>
+</html>

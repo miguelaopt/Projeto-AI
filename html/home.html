@@ -13,6 +13,8 @@
     <script src="/js/home.js" defer></script>
     <script src="/js/translation.js"></script>
     <script src="/js/datahora.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/carrinho.js"></script>
     <link rel="icon" type="image/png" href="/icon/cr_icon.png">
 
 </head>
@@ -43,6 +45,31 @@
         </li>
 
         <li><a href="contacto.html" data-lang="menu_contact">Contacto</a></li>
+
+        <li class="cart-container">
+            <a href="#" id="cart-btn">
+                🛒 <span id="cart-count" class="cart-badge">0</span>
+            </a>
+            
+            <div class="submenu cart-dropdown">
+                <h4 style="color:var(--gold); border-bottom:1px solid #444; padding-bottom:10px; margin-bottom:10px;">
+                    O teu Cesto
+                </h4>
+                
+                <ul id="cart-items-list" class="cart-items-list">
+                    <li style="padding:20px; text-align:center; color:#777;">O cesto está vazio.</li>
+                </ul>
+                
+                <div class="cart-total-row">
+                    <span>Total:</span>
+                    <span id="cart-total-value" class="cart-total-value">0.00€</span>
+                </div>
+                
+                <a href="checkout.html" class="btn-submit" style="display:block; text-align:center; margin-top:15px; text-decoration:none; font-size:0.9rem;">
+                    Finalizar Compra
+                </a>
+            </div>
+        </li>
 
         <li class="lang-switch">
             <button class="lang-btn" data-btn-lang="pt" onclick="changeLanguage('pt')">🇵🇹</button>

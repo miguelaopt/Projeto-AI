@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Encomendas | Royal</title>
+    
+    <link rel="icon" type="image/png" href="/icon/cr_icon.png"> <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/encomenda.css">
+    
+    <script src="/js/translation.js"></script>
+    <script src="/js/datahora.js"></script> <script src="/js/auth.js"></script>
+    <script src="/js/carrinho.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html" style="text-decoration:none; color:#F2B705;">
+                CERVEJARIA <span style="color:white;">ROYAL</span>
+            </a>
+        </div>
+        
+        <div id="date-time-display"></div> <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="cervejas.html" data-lang="menu_beers">Cervejas ▾</a></li>
+                
+                <li class="cart-container">
+                    <a href="#" id="cart-btn">🛒 <span id="cart-count" class="cart-badge">0</span></a>
+                    <div class="cart-dropdown">
+                        <h4 style="color:var(--gold); margin-bottom:10px;" data-lang="cart_title">O teu Cesto</h4>
+                        <ul id="cart-items-list" class="cart-items-list"></ul>
+                        <div class="cart-total-row"><span data-lang="cart_total">Total:</span> <span id="cart-total-value">0€</span></div>
+                        <a href="checkout.html" class="btn-submit" style="display:block; text-align:center; margin-top:10px;" data-lang="checkout_btn">Finalizar</a>
+                    </div>
+                </li>
+
+                <li class="lang-switch">
+                    <button class="lang-btn" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container orders-main">
+        <h1 class="section-title" data-lang="orders_title">Minhas Encomendas</h1>
+        <div id="orders-container" class="orders-container"></div>
+    </main>
+
+    <script>
+        function toggleDetails(header) {
+            const details = header.nextElementSibling;
+            if (details.style.display === "block") {
+                details.style.display = "none";
+                header.classList.remove("active");
+            } else {
+                details.style.display = "block";
+                header.classList.add("active");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const session = JSON.parse(localStorage.getItem("royal_session"));
+            if(!session) { window.location.href = "login.html"; return; }
+
+            const allOrders = JSON.parse(localStorage.getItem("royal_orders") || "[]");
+            const myOrders = allOrders.filter(o => o.user === session.nome).reverse(); 
+            const container = document.getElementById("orders-container");
+            const lang = localStorage.getItem('royal_lang') || 'pt';
+
+            if(myOrders.length === 0) {
+                container.innerHTML = `<p class="orders-empty-msg" data-lang="no_orders">Ainda não fez nenhuma encomenda.</p>`;
+                changeLanguage(lang);
+                return;
+            }
+
+            myOrders.forEach(order => {
+                const date = new Date(order.date).toLocaleDateString();
+                const row = document.createElement("div");
+                row.className = "order-row";
+
+                row.innerHTML = `
+                    <div class="order-header" onclick="toggleDetails(this)">
+                        <div>
+                            <span class="order-id">#${order.id}</span>
+                            <span class="order-date">${date}</span>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <span class="order-total">${order.total}</span>
+                            <span class="order-arrow">▼</span>
+                        </div>
+                    </div>
+                    
+                    <div class="order-details-box">
+                        <h4 style="color:#aaa; border-bottom:1px solid #444; padding-bottom:5px; margin-bottom:10px;">Itens:</h4>
+                        <ul class="order-items-list">
+                            ${order.items.map(item => `
+                                <li class="order-item-li">
+                                    <div class="order-item-info">
+                                        <img src="${item.img}" class="order-item-img">
+                                        <span>${item.name} <small style="color:#888;">(${item.packLabel})</small></span>
+                                    </div>
+                                    <div>x${item.qtd}</div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+            changeLanguage(lang);
+        });
+
+        function updateDateTime() {
+            const display = document.getElementById('date-time-display');
+            if (display) {
+                const now = new Date();
+                const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateStr = now.toLocaleDateString('pt-PT', dateOptions);
+                const timeStr = now.toLocaleTimeString('pt-PT', timeOptions);
+                display.innerHTML = ` ${dateStr} &nbsp;|&nbsp;  ${timeStr}`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateDateTime);
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+</body>
+</html>

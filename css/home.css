@@ -520,3 +520,266 @@ input:focus, select:focus, textarea:focus {
     color: var(--white);
     box-shadow: 0 0 10px rgba(242, 183, 5, 0.2); /* Brilho dourado ao passar o rato */
 }
+
+.cart-badge {
+    background-color: #d32f2f; /* Vermelho escuro */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: relative;
+    top: -8px;
+    margin-left: 2px;
+}
+
+/* Dropdown do Carrinho (Escondido por defeito) */
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 340px;
+    background-color: #1a1a1a;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    padding: 20px;
+    z-index: 1100;
+}
+
+/* Classe que o JavaScript adiciona para mostrar o carrinho */
+.cart-dropdown.show {
+    display: block;
+}
+
+/* Lista de itens dentro do cesto */
+.cart-items-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto; /* Scroll se tiver muitos itens */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding: 0;
+}
+
+/* Scrollbar personalizada para o cesto */
+.cart-items-list::-webkit-scrollbar {
+    width: 6px;
+}
+.cart-items-list::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 3px;
+}
+
+/* Linha de cada produto no cesto */
+.cart-item-row {
+    background: #222;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-row:hover {
+    border-color: #444;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-item-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.cart-remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #ff4444;
+    transition: color 0.2s;
+}
+
+.cart-remove-btn:hover {
+    color: #ff0000;
+}
+
+/* Linha de Total */
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: var(--white);
+}
+
+.cart-total-value {
+    color: var(--gold);
+}
+
+.login-btn-style {
+    background-color: var(--gold);
+    color: var(--bg-dark) !important; /* Força a cor escura */
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-btn-style:hover {
+    background-color: #d4a004; /* Dourado um pouco mais escuro */
+    color: #000 !important;    /* Garante que o texto se mantém preto */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(242, 183, 5, 0.4);
+}
+
+/* --- ESTILOS PARA DETALHES DA ENCOMENDA (Seta e Dropdown) --- */
+.order-row {
+    background: #222;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.order-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #222;
+    transition: background 0.3s;
+}
+
+.order-header:hover {
+    background: #2a2a2a;
+}
+
+.order-details-box {
+    display: none; /* Escondido por defeito */
+    background: #1a1a1a;
+    border-top: 1px solid #444;
+    padding: 20px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.order-arrow {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.order-header.active .order-arrow {
+    transform: rotate(180deg); /* Roda a seta */
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Foto de Perfil */
+.user-avatar {
+    width: 40px;  /* Tamanho da foto */
+    height: 40px; 
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--bg-dark);
+}
+
+/* Container do menu de utilizador no header */
+.user-menu-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* --- MODAL DE IDADE --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-box {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(242, 183, 5, 0.2);
+}
+
+.modal-title {
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.modal-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-age-yes {
+    padding: 12px 30px;
+    background-color: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.btn-age-yes:hover {
+    transform: scale(1.05);
+}
+
+.btn-age-no {
+    padding: 12px 30px;
+    background-color: transparent;
+    color: #aaa;
+    border: 1px solid #555;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.btn-age-no:hover {
+    border-color: var(--gold);
+    color: var(--white);
+}

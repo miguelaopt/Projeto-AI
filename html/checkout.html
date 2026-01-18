@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | Royal</title>
+    
+    <link rel="icon" type="image/png" href="/icon/cr_icon.png">
+    
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+    <link rel="stylesheet" href="/css/checkout.css">
+    
+    <script src="/js/translation.js"></script>
+    <script src="/js/datahora.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/carrinho.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="home.html" style="text-decoration:none; color:#F2B705;">
+                CERVEJARIA <span style="color:white;">ROYAL</span>
+            </a>
+        </div>
+        
+        <div id="date-time-display"></div>
+
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li class="lang-switch">
+                    <button class="lang-btn" onclick="changeLanguage('pt')">🇵🇹</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')">🇺🇸</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container checkout-main">
+        <div class="checkout-summary">
+            <h2 class="section-title" data-lang="order_summary">Resumo do Pedido</h2>
+            <table class="checkout-table">
+                <thead>
+                    <tr>
+                        <th data-lang="order_items">Produto</th>
+                        <th>Pack</th>
+                        <th>Qtd</th>
+                        <th>Preço</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-table-body"></tbody>
+            </table>
+            <div class="checkout-total-container">
+                <span data-lang="cart_total">Total:</span> <span id="checkout-total">0.00€</span>
+            </div>
+        </div>
+
+        <div class="contact-section checkout-form-container">
+            <h3 data-lang="shipping_data">Dados de Envio</h3>
+            <form id="checkout-form" class="contact-form">
+                <input type="text" id="checkout-address" placeholder="Morada Completa" required>
+                <input type="text" id="checkout-postal" placeholder="Código Postal" required>
+                <input type="text" id="checkout-card" placeholder="Número do Cartão (Simulado)" required>
+                <button type="submit" class="btn-submit" data-lang="pay_btn">Pagar e Encomendar</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // O renderCheckout já é chamado pelo carrinho.js ao carregar a página
+        const currentLang = localStorage.getItem('royal_lang') || 'pt';
+        changeLanguage(currentLang);
+
+        function updateDateTime() {
+            const display = document.getElementById('date-time-display');
+            if (display) {
+                const now = new Date();
+                const dateOptions = { day: 'numeric', month: 'short', year: 'numeric' };
+                const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                const dateStr = now.toLocaleDateString('pt-PT', dateOptions);
+                const timeStr = now.toLocaleTimeString('pt-PT', timeOptions);
+                display.innerHTML = ` ${dateStr} &nbsp;|&nbsp;  ${timeStr}`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateDateTime);
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
+    </script>
+</body>
+</html>

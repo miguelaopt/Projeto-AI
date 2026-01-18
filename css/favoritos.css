@@ -1,0 +1,16 @@
+.fav-main {
+    margin-top: 140px;
+    padding-bottom: 60px;
+}
+
+.fav-empty-msg {
+    color: #ccc;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Reutiliza o estilo da grelha, mas pode ter ajustes específicos aqui se quiseres */
+.fav-grid {
+    margin-top: 40px;
+}
